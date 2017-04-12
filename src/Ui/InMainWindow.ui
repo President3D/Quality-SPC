@@ -1,0 +1,2954 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>myMainWindow</class>
+ <widget class="QMainWindow" name="myMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">Qualiy SPC</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normalon>:/Icons/Images/Micrometer-100.png</normalon>
+   </iconset>
+  </property>
+  <property name="accessibleName">
+   <string notr="true">myMainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="myCentralwidget">
+   <property name="accessibleName">
+    <string notr="true">myCentralwidget</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(240, 240, 240);</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayoutCentralwidget" rowstretch="0" columnstretch="0">
+    <property name="leftMargin">
+     <number>6</number>
+    </property>
+    <property name="topMargin">
+     <number>2</number>
+    </property>
+    <property name="rightMargin">
+     <number>6</number>
+    </property>
+    <property name="bottomMargin">
+     <number>2</number>
+    </property>
+    <property name="horizontalSpacing">
+     <number>6</number>
+    </property>
+    <property name="verticalSpacing">
+     <number>0</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QStackedWidget" name="myStackedWidget">
+      <property name="accessibleName">
+       <string notr="true">myStackedWidget</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="myPageTestInstruction">
+       <property name="accessibleName">
+        <string notr="true">myPageTestInstruction</string>
+       </property>
+       <layout class="QGridLayout" name="myGridLayoutPageTestInstruction" rowstretch="3,3,4" columnstretch="3,3,4">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>1</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="myGroupBoxSpc">
+          <property name="accessibleName">
+           <string notr="true">myGroupBoxSpc</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#myGroupBoxSpc {background-color:  rgb(255, 255, 255); border: 1px ridge gray; border-radius: 2px; margin-top: 0ex} #myGroupBoxSpc::title{subcontrol-origin: margin; subcontrol-position: top left; padding: 2 2px; border: 0px solid gray; border-radius: 0px; background-color: transparent;}</string>
+          </property>
+          <property name="title">
+           <string>SPC</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayoutGroupBoxSpc">
+           <property name="leftMargin">
+            <number>4</number>
+           </property>
+           <property name="topMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>4</number>
+           </property>
+           <property name="bottomMargin">
+            <number>4</number>
+           </property>
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QFrame" name="myFrameSpc">
+             <property name="accessibleName">
+              <string>myFrameSpc</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Plain</enum>
+             </property>
+             <property name="lineWidth">
+              <number>0</number>
+             </property>
+             <layout class="QGridLayout" name="myGridLayoutSpc">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <property name="spacing">
+               <number>0</number>
+              </property>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QGroupBox" name="myGroupBoxSetpoint">
+          <property name="accessibleName">
+           <string notr="true">myGroupBoxSetpoint</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#myGroupBoxSetpoint {background-color:  qlineargradient(spread:reflect, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(240, 240, 240, 255), stop:1 rgba(255, 255, 255, 255)); border: 1px ridge gray; border-radius: 2px; margin-top: 0ex} #myGroupBoxSetpoint::title{subcontrol-origin: margin; subcontrol-position: top left; padding: 2 2px; border: 0px solid gray; border-radius: 0px; background-color: transparent;}</string>
+          </property>
+          <property name="title">
+           <string>Soll</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayoutGroupBoxSetpoint">
+           <property name="leftMargin">
+            <number>4</number>
+           </property>
+           <property name="topMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>4</number>
+           </property>
+           <property name="bottomMargin">
+            <number>4</number>
+           </property>
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QScrollArea" name="myScrollAreaSetpoint">
+             <property name="accessibleName">
+              <string notr="true">myScrollAreaSetpoint</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: transparent;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Plain</enum>
+             </property>
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="myScrollAreaSetpointContents">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>293</width>
+                <height>195</height>
+               </rect>
+              </property>
+              <property name="accessibleName">
+               <string notr="true">myScrollAreaSetpointContents</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: transparent;</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayoutScrollAreaSetpoint">
+               <property name="leftMargin">
+                <number>1</number>
+               </property>
+               <property name="topMargin">
+                <number>1</number>
+               </property>
+               <property name="rightMargin">
+                <number>1</number>
+               </property>
+               <property name="bottomMargin">
+                <number>1</number>
+               </property>
+               <property name="spacing">
+                <number>1</number>
+               </property>
+               <item row="3" column="0">
+                <widget class="QFrame" name="myFrameSetpointHline">
+                 <property name="accessibleName">
+                  <string notr="true">myFrameSetpointHline</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(154, 154, 154);</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::HLine</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Plain</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="myLabelType">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string notr="true">myLabelType</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: transparent;</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="myLabelValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string notr="true">myLabelValue</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: transparent;</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="myLabelReference">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string notr="true">myLabelReference</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: transparent;</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="myLabelEquipment">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string notr="true">myLabelEquipment</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: transparent;</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="myLabelTolerance">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string notr="true">myLabelTolerance</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: transparent;</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0">
+                <widget class="QLabel" name="myLabelInterference">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string notr="true">myLabelInterference</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: transparent;</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="2" rowspan="2">
+         <widget class="QGroupBox" name="myGroupBoxCharacteristics">
+          <property name="accessibleName">
+           <string notr="true">myGroupBoxCharacteristics</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#myGroupBoxCharacteristics {background-color:  qlineargradient(spread:reflect, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(240, 240, 240, 255), stop:1 rgba(255, 255, 255, 255)); border: 1px ridge gray; border-radius: 2px; margin-top: 0ex} #myGroupBoxCharacteristics::title{subcontrol-origin: margin; subcontrol-position: top left; padding: 2 2px; border: 0px solid gray; border-radius: 0px; background-color: transparent;}</string>
+          </property>
+          <property name="title">
+           <string>Merkmale</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayoutGroupBoxCharacteristics">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
+            <number>1</number>
+           </property>
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QScrollArea" name="myScrollAreaCharacteristics">
+             <property name="accessibleName">
+              <string notr="true">myScrollAreaCharacteristics</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: transparent;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="myScrollAreaCharacteristicsContents">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>400</width>
+                <height>416</height>
+               </rect>
+              </property>
+              <property name="accessibleName">
+               <string notr="true">myScrollAreaCharacteristicsContents</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">#myScrollAreaCharacteristics {background-color: transparent;}</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayoutScrollAreaCharacteristics">
+               <property name="leftMargin">
+                <number>1</number>
+               </property>
+               <property name="topMargin">
+                <number>1</number>
+               </property>
+               <property name="rightMargin">
+                <number>1</number>
+               </property>
+               <property name="bottomMargin">
+                <number>1</number>
+               </property>
+               <property name="horizontalSpacing">
+                <number>6</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>4</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="myLabelTestInstruction">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string notr="true">myLabelTestInstruction</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QTableView" name="myTableViewCharacteristics">
+                 <property name="accessibleName">
+                  <string notr="true">myTableViewCharacteristics</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QHeaderView::section {
+    background-color: lightgray;
+    color: black;
+    padding: 4px;
+    border: 1px solid black;
+}
+
+QHeaderView::section:checked
+{
+    background-color: lightgray;
+}</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Plain</enum>
+                 </property>
+                 <property name="editTriggers">
+                  <set>QAbstractItemView::NoEditTriggers</set>
+                 </property>
+                 <property name="alternatingRowColors">
+                  <bool>true</bool>
+                 </property>
+                 <property name="selectionMode">
+                  <enum>QAbstractItemView::SingleSelection</enum>
+                 </property>
+                 <property name="selectionBehavior">
+                  <enum>QAbstractItemView::SelectRows</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QGroupBox" name="myGroupBoxDeviation">
+          <property name="accessibleName">
+           <string notr="true">myGroupBoxDeviation</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#myGroupBoxDeviation {background-color: rgb(255, 255, 255); border: 1px ridge gray; border-radius: 2px; margin-top: 0ex} #myGroupBoxDeviation::title{subcontrol-origin: margin; subcontrol-position: top left; padding: 2 2px; border: 0px solid gray; border-radius: 0px; background-color: transparent;}</string>
+          </property>
+          <property name="title">
+           <string>Verteilung</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayoutGroupBoxDeviation">
+           <property name="leftMargin">
+            <number>4</number>
+           </property>
+           <property name="topMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>4</number>
+           </property>
+           <property name="bottomMargin">
+            <number>4</number>
+           </property>
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QFrame" name="myFrameDeviation">
+             <property name="accessibleName">
+              <string>myFrameDeviation</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Plain</enum>
+             </property>
+             <property name="lineWidth">
+              <number>0</number>
+             </property>
+             <layout class="QGridLayout" name="myGridLayoutDeviation">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <property name="spacing">
+               <number>0</number>
+              </property>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QGroupBox" name="myGroupBoxActualValue">
+          <property name="accessibleName">
+           <string notr="true">myGroupBoxActualValue</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#myGroupBoxActualValue {background-color:  qlineargradient(spread:reflect, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(240, 240, 240, 255), stop:1 rgba(255, 255, 255, 255)); border: 1px ridge gray; border-radius: 2px; margin-top: 0ex} #myGroupBoxActualValue::title{subcontrol-origin: margin; subcontrol-position: top left; padding: 2 2px; border: 0px solid gray; border-radius: 0px; background-color: transparent;}</string>
+          </property>
+          <property name="title">
+           <string>Ist</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_2" rowstretch="1,1,1,1,1" columnstretch="2,1,1">
+           <property name="leftMargin">
+            <number>4</number>
+           </property>
+           <property name="topMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>4</number>
+           </property>
+           <property name="bottomMargin">
+            <number>4</number>
+           </property>
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item row="3" column="1" rowspan="2">
+            <widget class="QToolButton" name="myToolButtonOk">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>1</horstretch>
+               <verstretch>1</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="accessibleName">
+              <string notr="true">myToolButtonOk</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#myToolButtonOk {color: black;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(187, 187, 187, 255));
+border-width: 1px;
+border-color: gray;
+border-style: outset;
+border-radius: 2px;
+padding: 3px}
+#myToolButtonOk:hover {color: black;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(187, 187, 187, 255));
+border-width: 2px;
+border-color: gray;
+border-style: outset;
+border-radius: 2px;
+padding: 3px}
+#myToolButtonOk:pressed {color: black;
+background-color: qlineargradient(spread:reflect, x1:0, y1:0.517, x2:0, y2:0, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(218, 218, 218, 255));
+border-width: 1px;
+border-color: gray;
+border-style: inset;
+border-radius: 2px;
+padding: 3px}
+</string>
+             </property>
+             <property name="text">
+              <string>i.O.</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normalon>:/Icons/Images/Approval-96.png</normalon>
+              </iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextUnderIcon</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLineEdit" name="myLineEditSerialNo">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>2</horstretch>
+               <verstretch>1</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>18</pointsize>
+              </font>
+             </property>
+             <property name="accessibleName">
+              <string notr="true">myLineEditSerialNo</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#myLineEditSerialNo {
+border: 1px solid gray;
+border-radius: 2px;
+padding: 3 3px;
+background: white;
+selection-background-color: darkgray;
+}</string>
+             </property>
+             <property name="placeholderText">
+              <string>...</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="myLabelSerialNo">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>2</horstretch>
+               <verstretch>1</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="accessibleName">
+              <string notr="true">myLabelSerialNo</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: transparent;</string>
+             </property>
+             <property name="text">
+              <string>Serien Nr.:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2" rowspan="2">
+            <widget class="QToolButton" name="myToolButtonNok">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>1</horstretch>
+               <verstretch>1</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="accessibleName">
+              <string notr="true">myToolButtonNok</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#myToolButtonNok {color: black;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(187, 187, 187, 255));
+border-width: 1px;
+border-color: gray;
+border-style: outset;
+border-radius: 2px;
+padding: 3px}
+#myToolButtonNok:hover {color: black;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(187, 187, 187, 255));
+border-width: 2px;
+border-color: gray;
+border-style: outset;
+border-radius: 2px;
+padding: 3px}
+#myToolButtonNok:pressed {color: black;
+background-color: qlineargradient(spread:reflect, x1:0, y1:0.517, x2:0, y2:0, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(218, 218, 218, 255));
+border-width: 1px;
+border-color: gray;
+border-style: inset;
+border-radius: 2px;
+padding: 3px}
+</string>
+             </property>
+             <property name="text">
+              <string>n.i.O.</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normalon>:/Icons/Images/Cancel-96.png</normalon>
+              </iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextUnderIcon</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="3">
+            <widget class="QLineEdit" name="myLineEditActualValue">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>1</horstretch>
+               <verstretch>1</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>18</pointsize>
+              </font>
+             </property>
+             <property name="accessibleName">
+              <string notr="true">myLineEditActualValue</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#myLineEditActualValue {
+border: 1px solid gray;
+border-radius: 2px;
+padding: 3 3px;
+background: white;
+selection-background-color: darkgray;
+}</string>
+             </property>
+             <property name="placeholderText">
+              <string>...</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="3">
+            <widget class="QFrame" name="myFrameActualValueHLine">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="accessibleName">
+              <string notr="true">myFrameActualValueHLine</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(154, 154, 154);</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::HLine</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Plain</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="myLabelActualValue">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>1</horstretch>
+               <verstretch>1</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="accessibleName">
+              <string notr="true">myLabelActualValue</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: transparent;</string>
+             </property>
+             <property name="text">
+              <string>Messwert:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1" colspan="2">
+            <widget class="QLabel" name="myLabelActualValuePreview">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="accessibleName">
+              <string>myLabelActualValuePreview</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#myLabelActualValuePreview {
+border: 1px solid gray;
+border-radius: 2px;
+padding: 3 3px;
+background: transparent;
+}</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="0" colspan="2">
+         <widget class="QGroupBox" name="myGroupBoxImage">
+          <property name="accessibleName">
+           <string notr="true">myGroupBoxImage</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#myGroupBoxImage {background-color:  qlineargradient(spread:reflect, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(240, 240, 240, 255), stop:1 rgba(255, 255, 255, 255)); border: 1px ridge gray; border-radius: 2px; margin-top: 0ex} #myGroupBoxImage::title{subcontrol-origin: margin; subcontrol-position: top left; padding: 2 2px; border: 0px solid gray; border-radius: 0px; background-color: transparent;}</string>
+          </property>
+          <property name="title">
+           <string>Bilder</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayoutGroupBoxImage" columnstretch="6,1">
+           <property name="leftMargin">
+            <number>4</number>
+           </property>
+           <property name="topMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>4</number>
+           </property>
+           <property name="bottomMargin">
+            <number>4</number>
+           </property>
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item row="4" column="1">
+            <widget class="QLabel" name="myLabelImageAmount">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="accessibleName">
+              <string notr="true">myLabelImageAmount</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: transparent;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QPushButton" name="myPushButtonBackward">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="accessibleName">
+              <string notr="true">myPushButtonBackward</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#myPushButtonBackward {color: black;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(187, 187, 187, 255));
+border-width: 1px;
+border-color: gray;
+border-style: outset;
+border-radius: 2px;
+padding: 3px}
+#myPushButtonBackward:hover {color: black;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(187, 187, 187, 255));
+border-width: 2px;
+border-color: gray;
+border-style: outset;
+border-radius: 2px;
+padding: 3px}
+#myPushButtonBackward:pressed {color: black;
+background-color: qlineargradient(spread:reflect, x1:0, y1:0.517, x2:0, y2:0, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(218, 218, 218, 255));
+border-width: 1px;
+border-color: gray;
+border-style: inset;
+border-radius: 2px;
+padding: 3px}
+</string>
+             </property>
+             <property name="text">
+              <string>Zurück</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QPushButton" name="myPushButtonZoom">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="accessibleName">
+              <string notr="true">myPushButtonZoom</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#myPushButtonZoom {color: black;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(187, 187, 187, 255));
+border-width: 1px;
+border-color: gray;
+border-style: outset;
+border-radius: 2px;
+padding: 3px}
+#myPushButtonZoom:hover {color: black;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(187, 187, 187, 255));
+border-width: 2px;
+border-color: gray;
+border-style: outset;
+border-radius: 2px;
+padding: 3px}
+#myPushButtonZoom:pressed {color: black;
+background-color: qlineargradient(spread:reflect, x1:0, y1:0.517, x2:0, y2:0, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(218, 218, 218, 255));
+border-width: 1px;
+border-color: gray;
+border-style: inset;
+border-radius: 2px;
+padding: 3px}
+</string>
+             </property>
+             <property name="text">
+              <string>Zoom</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QPushButton" name="myPushButtonForward">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="accessibleName">
+              <string notr="true">myPushButtonForward</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#myPushButtonForward {color: black;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(187, 187, 187, 255));
+border-width: 1px;
+border-color: gray;
+border-style: outset;
+border-radius: 2px;
+padding: 3px}
+#myPushButtonForward:hover {color: black;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(187, 187, 187, 255));
+border-width: 2px;
+border-color: gray;
+border-style: outset;
+border-radius: 2px;
+padding: 3px}
+#myPushButtonForward:pressed {color: black;
+background-color: qlineargradient(spread:reflect, x1:0, y1:0.517, x2:0, y2:0, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(218, 218, 218, 255));
+border-width: 1px;
+border-color: gray;
+border-style: inset;
+border-radius: 2px;
+padding: 3px}
+</string>
+             </property>
+             <property name="text">
+              <string>Vor</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0" rowspan="5">
+            <widget class="QLabel" name="myLabelImage">
+             <property name="accessibleName">
+              <string notr="true">myLabelImage</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: transparent;</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="scaledContents">
+              <bool>false</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QPushButton" name="myPushButtonVideo">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="accessibleName">
+              <string notr="true">myPushButtonVideo</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#myPushButtonVideo {color: black;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(187, 187, 187, 255));
+border-width: 1px;
+border-color: gray;
+border-style: outset;
+border-radius: 2px;
+padding: 3px}
+#myPushButtonVideo:hover {color: black;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(187, 187, 187, 255));
+border-width: 2px;
+border-color: gray;
+border-style: outset;
+border-radius: 2px;
+padding: 3px}
+#myPushButtonVideo:pressed {color: black;
+background-color: qlineargradient(spread:reflect, x1:0, y1:0.517, x2:0, y2:0, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(218, 218, 218, 255));
+border-width: 1px;
+border-color: gray;
+border-style: inset;
+border-radius: 2px;
+padding: 3px}
+</string>
+             </property>
+             <property name="text">
+              <string>Video</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QGroupBox" name="myGroupBoxDescription">
+          <property name="accessibleName">
+           <string notr="true">myGroupBoxDescription</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#myGroupBoxDescription {background-color:  qlineargradient(spread:reflect, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(240, 240, 240, 255), stop:1 rgba(255, 255, 255, 255)); border: 1px ridge gray; border-radius: 2px; margin-top: 0ex} #myGroupBoxDescription::title{subcontrol-origin: margin; subcontrol-position: top left; padding: 2 2px; border: 0px solid gray; border-radius: 0px; background-color: transparent;}</string>
+          </property>
+          <property name="title">
+           <string>Beschreibung</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayoutGroupBoxDescription">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
+            <number>1</number>
+           </property>
+           <property name="horizontalSpacing">
+            <number>1</number>
+           </property>
+           <property name="verticalSpacing">
+            <number>6</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QTextBrowser" name="myTextBrowserDescription">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
+             <property name="accessibleName">
+              <string notr="true">myTextBrowserDescription</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: transparent;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Plain</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="myPageSpc">
+       <property name="accessibleName">
+        <string notr="true">myPageSpc</string>
+       </property>
+       <layout class="QGridLayout" name="myGridLayoutPageSpc" rowstretch="6,4" columnstretch="6,4">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>1</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="myGroupBoxSpcFull">
+          <property name="accessibleName">
+           <string>myGroupBoxSpcFull</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#myGroupBoxSpcFull {background-color:  rgb(255, 255, 255); border: 1px ridge gray; border-radius: 2px; margin-top: 0ex} #myGroupBoxSpcFull::title{subcontrol-origin: margin; subcontrol-position: top left; padding: 2 2px; border: 0px solid gray; border-radius: 0px; background-color: transparent;}</string>
+          </property>
+          <property name="title">
+           <string>SPC Fullscreen</string>
+          </property>
+          <layout class="QGridLayout" name="myGridLayoutGroupBoxSpcFull">
+           <property name="leftMargin">
+            <number>4</number>
+           </property>
+           <property name="topMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>4</number>
+           </property>
+           <property name="bottomMargin">
+            <number>4</number>
+           </property>
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QFrame" name="myFrameSpcFull">
+             <property name="accessibleName">
+              <string>myFrameSpcFull</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Plain</enum>
+             </property>
+             <property name="lineWidth">
+              <number>0</number>
+             </property>
+             <layout class="QVBoxLayout" name="myVerticalLayoutFrameSpcFull">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QGroupBox" name="myGroupBoxStatisticSpc">
+          <property name="accessibleName">
+           <string>myGroupBoxStatisticSpc</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#myGroupBoxStatisticSpc {background-color:  qlineargradient(spread:reflect, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(240, 240, 240, 255), stop:1 rgba(255, 255, 255, 255)); border: 1px ridge gray; border-radius: 2px; margin-top: 0ex} #myGroupBoxStatisticSpc::title{subcontrol-origin: margin; subcontrol-position: top left; padding: 2 2px; border: 0px solid gray; border-radius: 0px; background-color: transparent;}</string>
+          </property>
+          <property name="title">
+           <string>Statistik</string>
+          </property>
+          <layout class="QGridLayout" name="myGridLayoutStatisticSpc">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
+            <number>1</number>
+           </property>
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QScrollArea" name="myScrollAreaGroupBoxStatisticSpc">
+             <property name="accessibleName">
+              <string>myScrollAreaGroupBoxStatisticSpc</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: transparent;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="scrollAreaWidgetContents">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>396</width>
+                <height>113</height>
+               </rect>
+              </property>
+              <layout class="QGridLayout" name="myGridLayoutGroupBoxStatisticSpc" rowstretch="1,1,1,1,1" columnstretch="2,1,1,2,1">
+               <property name="leftMargin">
+                <number>1</number>
+               </property>
+               <property name="topMargin">
+                <number>1</number>
+               </property>
+               <property name="rightMargin">
+                <number>1</number>
+               </property>
+               <property name="bottomMargin">
+                <number>1</number>
+               </property>
+               <property name="spacing">
+                <number>4</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="myLabelStatisticSpcCpk">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelStatisticSpcCpk</string>
+                 </property>
+                 <property name="text">
+                  <string>Cpk:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QLabel" name="myLabelSpcCpkValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelSpcCpkValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="myLabelStatisticSpcAverage">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelStatisticSpcAverage</string>
+                 </property>
+                 <property name="text">
+                  <string>Mittelwert (µ):</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QLabel" name="myLabelSpcDeivationValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelSpcDeivationValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="myLabelStatistcSpcDeviation">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelStatistcSpcDeviation</string>
+                 </property>
+                 <property name="text">
+                  <string>Standardabweichung (σ):</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QLabel" name="myLabelSpcAverageValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelSpcAverageValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="myLabelStatisticSpcAndSicSigma">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelStatisticSpcAndSicSigma</string>
+                 </property>
+                 <property name="text">
+                  <string>µ + 6σ:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="myLabelStatisticSpcMinusSixSigma">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelStatisticSpcMinusSixSigma</string>
+                 </property>
+                 <property name="text">
+                  <string>µ - 6σ:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QLabel" name="myLabelSpcMinusSixSigmaValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelSpcMinusSixSigmaValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QLabel" name="myLabelSpcAndSixSigmaValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelSpcAndSixSigmaValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <widget class="QLabel" name="myLabelStatisticSpcUtl">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelStatisticSpcUtl</string>
+                 </property>
+                 <property name="text">
+                  <string>Obere Toleranzgrenze:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QLabel" name="myLabelStatisticSpcLtl">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelStatisticSpcLtl</string>
+                 </property>
+                 <property name="text">
+                  <string>Untere Toleranzgrenze:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="4">
+                <widget class="QLabel" name="myLabelSpcUtlValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelSpcUtlValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="4">
+                <widget class="QLabel" name="myLabelSpcLtlValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelSpcLtlValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="3">
+                <widget class="QLabel" name="myLabelStatisticSpcUil">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelStatisticSpcUil</string>
+                 </property>
+                 <property name="text">
+                  <string>Obere Eingriffsgrenze:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="3">
+                <widget class="QLabel" name="myLabelStatisticSpcLil">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelStatisticSpcLil</string>
+                 </property>
+                 <property name="text">
+                  <string>Untere Eingriffsgrenze:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="4">
+                <widget class="QLabel" name="myLabelSpcUilValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelSpcUilValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="4">
+                <widget class="QLabel" name="myLabelSpcLilValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelSpcLilValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2" rowspan="5">
+                <widget class="QFrame" name="myFrameVlineStatisticSpc">
+                 <property name="accessibleName">
+                  <string>myFrameVlineStatisticSpc</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(154, 154, 154);</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::VLine</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Plain</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QLabel" name="myLabelStatisticSpcPpm">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelStatisticSpcPpm</string>
+                 </property>
+                 <property name="text">
+                  <string>PPM:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="4">
+                <widget class="QLabel" name="myLabelSpcPpmValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelSpcPpmValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="1" rowspan="2">
+         <widget class="QGroupBox" name="myGroupBoxCharacteristicsSpc">
+          <property name="accessibleName">
+           <string>myGroupBoxCharacteristicsSpc</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#myGroupBoxCharacteristicsSpc {background-color:  qlineargradient(spread:reflect, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(240, 240, 240, 255), stop:1 rgba(255, 255, 255, 255)); border: 1px ridge gray; border-radius: 2px; margin-top: 0ex} #myGroupBoxCharacteristicsSpc::title{subcontrol-origin: margin; subcontrol-position: top left; padding: 2 2px; border: 0px solid gray; border-radius: 0px; background-color: transparent;}</string>
+          </property>
+          <property name="title">
+           <string>Merkmale</string>
+          </property>
+          <layout class="QGridLayout" name="myGridLayoutGroupBoxCharacteristicsSpc">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
+            <number>1</number>
+           </property>
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QScrollArea" name="myScrollAreaGroupBoyCharacteristicsSpc">
+             <property name="accessibleName">
+              <string>myScrollAreaGroupBoyCharacteristicsSpc</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: transparent;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Sunken</enum>
+             </property>
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="myScrollAreaWidgetContentsSpc">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>83</width>
+                <height>94</height>
+               </rect>
+              </property>
+              <property name="accessibleName">
+               <string>myScrollAreaWidgetContentsSpc</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">#myScrollAreaWidgetContentsSpc {background-color: transparent;}</string>
+              </property>
+              <layout class="QGridLayout" name="myGridLayoutScrollAreaWidgetContentsSpc">
+               <property name="leftMargin">
+                <number>1</number>
+               </property>
+               <property name="topMargin">
+                <number>1</number>
+               </property>
+               <property name="rightMargin">
+                <number>1</number>
+               </property>
+               <property name="bottomMargin">
+                <number>1</number>
+               </property>
+               <property name="spacing">
+                <number>4</number>
+               </property>
+               <item row="1" column="0">
+                <widget class="QTableView" name="myTableViewCharacteristicsPageSpc">
+                 <property name="accessibleName">
+                  <string>myTableViewCharacteristicsPageSpc</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QHeaderView::section {
+    background-color: lightgray;
+    color: black;
+    padding: 4px;
+    border: 1px solid black;
+}
+
+QHeaderView::section:checked
+{
+    background-color: lightgray;
+}</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <property name="editTriggers">
+                  <set>QAbstractItemView::NoEditTriggers</set>
+                 </property>
+                 <property name="alternatingRowColors">
+                  <bool>true</bool>
+                 </property>
+                 <property name="selectionMode">
+                  <enum>QAbstractItemView::SingleSelection</enum>
+                 </property>
+                 <property name="selectionBehavior">
+                  <enum>QAbstractItemView::SelectRows</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="myLabelTestInstructionNamePageSpc">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelTestInstructionNamePageSpc</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="myPageDeviation">
+       <property name="accessibleName">
+        <string notr="true">myPageDeviation</string>
+       </property>
+       <layout class="QGridLayout" name="myGridLayoutPageDeviation" rowstretch="6,4" columnstretch="6,4">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>1</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="myGroupBoxDeviationFull">
+          <property name="accessibleName">
+           <string>myGroupBoxDeviationFull</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#myGroupBoxDeviationFull {background-color:  rgb(255, 255, 255); border: 1px ridge gray; border-radius: 2px; margin-top: 0ex} #myGroupBoxDeviationFull::title{subcontrol-origin: margin; subcontrol-position: top left; padding: 2 2px; border: 0px solid gray; border-radius: 0px; background-color: transparent;}</string>
+          </property>
+          <property name="title">
+           <string>Verteilung Fullscreen</string>
+          </property>
+          <layout class="QGridLayout" name="myGridLayoutGroupBoxDeviationFull">
+           <property name="leftMargin">
+            <number>4</number>
+           </property>
+           <property name="topMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>4</number>
+           </property>
+           <property name="bottomMargin">
+            <number>4</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QFrame" name="myFrameDeviationFull">
+             <property name="accessibleName">
+              <string>myFrameDeviationFull</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Plain</enum>
+             </property>
+             <property name="lineWidth">
+              <number>0</number>
+             </property>
+             <layout class="QVBoxLayout" name="myVerticalLayoutGroupBoxDeviationFull">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QGroupBox" name="myGroupBoxStatisticDeviation">
+          <property name="accessibleName">
+           <string>myGroupBoxStatisticDeviation</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#myGroupBoxStatisticDeviation {background-color:  qlineargradient(spread:reflect, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(240, 240, 240, 255), stop:1 rgba(255, 255, 255, 255)); border: 1px ridge gray; border-radius: 2px; margin-top: 0ex} #myGroupBoxStatisticDeviation::title{subcontrol-origin: margin; subcontrol-position: top left; padding: 2 2px; border: 0px solid gray; border-radius: 0px; background-color: transparent;}</string>
+          </property>
+          <property name="title">
+           <string>Statistik</string>
+          </property>
+          <layout class="QGridLayout" name="myGridLayoutGroupBoxStatisticDeviation">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
+            <number>1</number>
+           </property>
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QScrollArea" name="myScrollAreaGroupBoxStatisticDeviation">
+             <property name="accessibleName">
+              <string>myScrollAreaGroupBoxStatisticDeviation</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: transparent;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Sunken</enum>
+             </property>
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="myScrollAreaWidgetContentsDeviation_2">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>396</width>
+                <height>113</height>
+               </rect>
+              </property>
+              <property name="accessibleName">
+               <string>myScrollAreaWidgetContentsDeviation</string>
+              </property>
+              <layout class="QGridLayout" name="myGridLayoutScrollAreaDeviation" rowstretch="1,1,1,1,1" columnstretch="2,1,1,2,1">
+               <property name="leftMargin">
+                <number>1</number>
+               </property>
+               <property name="topMargin">
+                <number>1</number>
+               </property>
+               <property name="rightMargin">
+                <number>1</number>
+               </property>
+               <property name="bottomMargin">
+                <number>1</number>
+               </property>
+               <property name="spacing">
+                <number>4</number>
+               </property>
+               <item row="2" column="4">
+                <widget class="QLabel" name="myLabelDeviationLtlValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationLtlValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="4">
+                <widget class="QLabel" name="myLabelDeviationLilValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationLilValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2" rowspan="5">
+                <widget class="QFrame" name="myFrameVlineStatisticDeviation">
+                 <property name="accessibleName">
+                  <string>myFrameVlineStatisticDeviation</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(154, 154, 154);</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::VLine</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Plain</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QLabel" name="myLabelDeviationCpkValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationCpkValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QLabel" name="myLabelDeviationDeivationValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationDeivationValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="4">
+                <widget class="QLabel" name="myLabelDeviationUtlValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationUtlValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="4">
+                <widget class="QLabel" name="myLabelDeviationPpmValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationPpmValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QLabel" name="myLabelDeviationAverageValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationAverageValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QLabel" name="myLabelDeviationAndSixSigmaValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationAndSixSigmaValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QLabel" name="myLabelDeviationMinusSixSigmaValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationMinusSixSigmaValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="4">
+                <widget class="QLabel" name="myLabelDeviationUilValue">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationUilValue</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="myLabelDeviationCpk">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationCpk</string>
+                 </property>
+                 <property name="text">
+                  <string>Cpk:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="myLabelDeviationAverage">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationAverage</string>
+                 </property>
+                 <property name="text">
+                  <string>Mittelwert (µ):</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="myLabelDeviationDeivation">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationDeivation</string>
+                 </property>
+                 <property name="text">
+                  <string>Standardabweichung (σ):</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="myLabelDeviationAndSixSigma">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationAndSixSigma</string>
+                 </property>
+                 <property name="text">
+                  <string>µ + 6σ:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="myLabelDeviationMinusSixSigma">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationMinusSixSigma</string>
+                 </property>
+                 <property name="text">
+                  <string>µ - 6σ:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QLabel" name="myLabelDeviationPpm">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationPpm</string>
+                 </property>
+                 <property name="text">
+                  <string>PPM:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <widget class="QLabel" name="myLabelDeviationUtl">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationUtl</string>
+                 </property>
+                 <property name="text">
+                  <string>Obere Toleranzgrenze:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QLabel" name="myLabelDeviationLtl">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Untere Toleranzgrenze:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="3">
+                <widget class="QLabel" name="myLabelDeviationUil">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationUil</string>
+                 </property>
+                 <property name="text">
+                  <string>Obere Eingriffsgrenze:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="3">
+                <widget class="QLabel" name="myLabelDeviationLil">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelDeviationLil</string>
+                 </property>
+                 <property name="text">
+                  <string>Untere Eingriffsgrenze:</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="1" rowspan="2">
+         <widget class="QGroupBox" name="myGroupBoxCharacteristicsDeviation">
+          <property name="accessibleName">
+           <string>myGroupBoxCharacteristicsDeviation</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#myGroupBoxCharacteristicsDeviation {background-color:  qlineargradient(spread:reflect, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(240, 240, 240, 255), stop:1 rgba(255, 255, 255, 255)); border: 1px ridge gray; border-radius: 2px; margin-top: 0ex} #myGroupBoxCharacteristicsDeviation::title{subcontrol-origin: margin; subcontrol-position: top left; padding: 2 2px; border: 0px solid gray; border-radius: 0px; background-color: transparent;}</string>
+          </property>
+          <property name="title">
+           <string>Merkmale</string>
+          </property>
+          <layout class="QGridLayout" name="myGridLayoutGroupBoxCharacteristicsDeviation">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
+            <number>1</number>
+           </property>
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QScrollArea" name="myScrollAreaGroupBoxCharacteristicsDeviation">
+             <property name="accessibleName">
+              <string>myScrollAreaGroupBoxCharacteristicsDeviation</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: transparent;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="myScrollAreaWidgetContentsDeviation">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>83</width>
+                <height>94</height>
+               </rect>
+              </property>
+              <property name="accessibleName">
+               <string>myScrollAreaWidgetContentsDeviation</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">#myScrollAreaWidgetContentsDeviation {background-color: transparent;}</string>
+              </property>
+              <layout class="QGridLayout" name="myGridLayoutScrollAreaWidgetsDeviation">
+               <property name="leftMargin">
+                <number>1</number>
+               </property>
+               <property name="topMargin">
+                <number>1</number>
+               </property>
+               <property name="rightMargin">
+                <number>1</number>
+               </property>
+               <property name="bottomMargin">
+                <number>1</number>
+               </property>
+               <property name="spacing">
+                <number>4</number>
+               </property>
+               <item row="1" column="0">
+                <widget class="QTableView" name="myTableViewCharacteristicsDeviationFull">
+                 <property name="accessibleName">
+                  <string>myTableViewCharacteristicsDeviationFull</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QHeaderView::section {
+    background-color: lightgray;
+    color: black;
+    padding: 4px;
+    border: 1px solid black;
+}
+
+QHeaderView::section:checked
+{
+    background-color: lightgray;
+}</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <property name="editTriggers">
+                  <set>QAbstractItemView::NoEditTriggers</set>
+                 </property>
+                 <property name="alternatingRowColors">
+                  <bool>true</bool>
+                 </property>
+                 <property name="selectionMode">
+                  <enum>QAbstractItemView::SingleSelection</enum>
+                 </property>
+                 <property name="selectionBehavior">
+                  <enum>QAbstractItemView::SelectRows</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="myLabelTestInstructionNamePageDeviation">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelTestInstructionNamePageDeviation</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="myPageResult">
+       <property name="accessibleName">
+        <string>myPageResult</string>
+       </property>
+       <layout class="QGridLayout" name="myGridLayoutPageResult" columnstretch="6,4">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>1</number>
+        </property>
+        <item row="0" column="1">
+         <widget class="QGroupBox" name="myGroupBoxCharacteristicsResult">
+          <property name="accessibleName">
+           <string>myGroupBoxCharacteristicsResult</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#myGroupBoxCharacteristicsResult {background-color:  qlineargradient(spread:reflect, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(240, 240, 240, 255), stop:1 rgba(255, 255, 255, 255)); border: 1px ridge gray; border-radius: 2px; margin-top: 0ex} #myGroupBoxCharacteristicsResult::title{subcontrol-origin: margin; subcontrol-position: top left; padding: 2 2px; border: 0px solid gray; border-radius: 0px; background-color: transparent;}</string>
+          </property>
+          <property name="title">
+           <string>Merkmale</string>
+          </property>
+          <layout class="QGridLayout" name="myGridLayoutGroupBoxCharacteristicsResult">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
+            <number>1</number>
+           </property>
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QScrollArea" name="myScrollAreaCharacteristicsPageResult">
+             <property name="accessibleName">
+              <string>myScrollAreaCharacteristicsPageResult</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: transparent;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="myScrollAreaCharacteristicsPageResultWidgetContents">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>83</width>
+                <height>94</height>
+               </rect>
+              </property>
+              <property name="accessibleName">
+               <string>myScrollAreaCharacteristicsPageResultWidgetContents</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">#myScrollAreaCharacteristicsPageResultWidgetContents {background-color: transparent;}</string>
+              </property>
+              <layout class="QGridLayout" name="myGridLayoutScrollAreaCharacteristicsWidgetContents">
+               <property name="leftMargin">
+                <number>1</number>
+               </property>
+               <property name="topMargin">
+                <number>1</number>
+               </property>
+               <property name="rightMargin">
+                <number>1</number>
+               </property>
+               <property name="bottomMargin">
+                <number>1</number>
+               </property>
+               <property name="spacing">
+                <number>4</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="myLabelTestInstructionNamePageResult">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="accessibleName">
+                  <string>myLabelTestInstructionNamePageResult</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QTableView" name="myTableViewCharacteristicsPageResult">
+                 <property name="accessibleName">
+                  <string>myTableViewCharacteristicsPageResult</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QHeaderView::section {
+    background-color: lightgray;
+    color: black;
+    padding: 4px;
+    border: 1px solid black;
+}
+
+QHeaderView::section:checked
+{
+    background-color: lightgray;
+}</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <property name="editTriggers">
+                  <set>QAbstractItemView::NoEditTriggers</set>
+                 </property>
+                 <property name="alternatingRowColors">
+                  <bool>true</bool>
+                 </property>
+                 <property name="selectionMode">
+                  <enum>QAbstractItemView::SingleSelection</enum>
+                 </property>
+                 <property name="selectionBehavior">
+                  <enum>QAbstractItemView::SelectRows</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="myGroupBoxResult">
+          <property name="accessibleName">
+           <string>myGroupBoxResult</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#myGroupBoxResult {background-color:  qlineargradient(spread:reflect, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(240, 240, 240, 255), stop:1 rgba(255, 255, 255, 255)); border: 1px ridge gray; border-radius: 2px; margin-top: 0ex} #myGroupBoxResult::title{subcontrol-origin: margin; subcontrol-position: top left; padding: 2 2px; border: 0px solid gray; border-radius: 0px; background-color: transparent;}</string>
+          </property>
+          <property name="title">
+           <string>Ergebnisliste</string>
+          </property>
+          <layout class="QGridLayout" name="myGridLayoutGroupBoxResult">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
+            <number>1</number>
+           </property>
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QScrollArea" name="myScrollAreaGroupBoxResult">
+             <property name="accessibleName">
+              <string>myScrollAreaGroupBoxResult</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: transparent;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="myScrollAreaGroupBoxResultWidgetContents">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>83</width>
+                <height>71</height>
+               </rect>
+              </property>
+              <property name="accessibleName">
+               <string>myScrollAreaGroupBoxResultWidgetContents</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">#myScrollAreaGroupBoxWidgetContents {background-color: transparent;}</string>
+              </property>
+              <layout class="QGridLayout" name="myGridLayoutSrcollAreaResultWidgetContents">
+               <property name="leftMargin">
+                <number>1</number>
+               </property>
+               <property name="topMargin">
+                <number>1</number>
+               </property>
+               <property name="rightMargin">
+                <number>1</number>
+               </property>
+               <property name="bottomMargin">
+                <number>1</number>
+               </property>
+               <property name="spacing">
+                <number>4</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QTableView" name="myTableViewResult">
+                 <property name="accessibleName">
+                  <string>myTableViewResult</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QHeaderView::section {
+    background-color: lightgray;
+    color: black;
+    padding: 4px;
+    border: 1px solid black;
+}
+
+QHeaderView::section:checked
+{
+    background-color: lightgray;
+}</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <property name="editTriggers">
+                  <set>QAbstractItemView::NoEditTriggers</set>
+                 </property>
+                 <property name="alternatingRowColors">
+                  <bool>true</bool>
+                 </property>
+                 <property name="selectionMode">
+                  <enum>QAbstractItemView::ExtendedSelection</enum>
+                 </property>
+                 <property name="selectionBehavior">
+                  <enum>QAbstractItemView::SelectRows</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="myPageLicense">
+       <property name="accessibleName">
+        <string notr="true">myPageLicense</string>
+       </property>
+       <layout class="QGridLayout" name="myGridLayoutPageLicense">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>1</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QTextBrowser" name="myTextBrowserLicense">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="accessibleName">
+           <string>myTextBrowserLicense</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#myTextBrowserLicense {background-color:  qlineargradient(spread:reflect, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(240, 240, 240, 255), stop:1 rgba(255, 255, 255, 255)); border: 1px ridge gray; border-radius: 2px; margin-top: 0ex}</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Plain</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="myPageContact">
+       <property name="accessibleName">
+        <string notr="true">myPageContact</string>
+       </property>
+       <layout class="QGridLayout" name="myGridLayoutPageContact">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>1</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QTextBrowser" name="myTextBrowserContact">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="accessibleName">
+           <string>myTextBrowserContact</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#myTextBrowserContact {background-color:  qlineargradient(spread:reflect, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(240, 240, 240, 255), stop:1 rgba(255, 255, 255, 255)); border: 1px ridge gray; border-radius: 2px; margin-top: 0ex}</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Plain</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="myMenubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="accessibleName">
+    <string notr="true">myMenubar</string>
+   </property>
+   <widget class="QMenu" name="myMenuFile">
+    <property name="accessibleName">
+     <string notr="true">myMenuFile</string>
+    </property>
+    <property name="title">
+     <string>Datei</string>
+    </property>
+    <addaction name="myActionStartTesting"/>
+    <addaction name="separator"/>
+    <addaction name="myActionNewTestInstruction"/>
+    <addaction name="myActionEditTestInstruction"/>
+    <addaction name="separator"/>
+    <addaction name="myActionQuit"/>
+   </widget>
+   <widget class="QMenu" name="myMenuView">
+    <property name="accessibleName">
+     <string notr="true">myMenuView</string>
+    </property>
+    <property name="title">
+     <string>Ansicht</string>
+    </property>
+    <addaction name="myActionFullscreenTi"/>
+    <addaction name="myActionFullscreenSpc"/>
+    <addaction name="myActionFullscreenDeviation"/>
+    <addaction name="myActionResultlist"/>
+   </widget>
+   <widget class="QMenu" name="myMenuInfo">
+    <property name="accessibleName">
+     <string notr="true">myMenuInfo</string>
+    </property>
+    <property name="title">
+     <string>Info</string>
+    </property>
+    <addaction name="myActionLicense"/>
+    <addaction name="myActionContact"/>
+   </widget>
+   <addaction name="myMenuFile"/>
+   <addaction name="myMenuView"/>
+   <addaction name="myMenuInfo"/>
+  </widget>
+  <widget class="QStatusBar" name="myStatusbar">
+   <property name="accessibleName">
+    <string notr="true">myStatusbar</string>
+   </property>
+  </widget>
+  <action name="myActionStartTesting">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Icons/Images/Open Folder-100.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Prüfplan öffnen</string>
+   </property>
+   <property name="statusTip">
+    <string>Die Prüfungen mit einem vorhandenen Prüfplan beginnen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="myActionCreateDocumentation">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Icons/Images/Document-100.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Ergebnis dokumentieren</string>
+   </property>
+   <property name="statusTip">
+    <string>Die Ergebnisse in einem Prüfprotokoll dokumentieren</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="myActionNewTestInstruction">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Icons/Images/Create New-100.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Prüfplan erstellen</string>
+   </property>
+   <property name="statusTip">
+    <string>Einen neuen Prüfplan erstellen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="myActionEditTestInstruction">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Icons/Images/Edit Image-100.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Prüfplan bearbeiten</string>
+   </property>
+   <property name="statusTip">
+    <string>Einen vorhandenen Prüfplan bearbeiten</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+  </action>
+  <action name="myActionQuit">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Icons/Images/Close Window-80.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Beenden</string>
+   </property>
+   <property name="statusTip">
+    <string>Das Programm beenden</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="myActionFullscreenTi">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Icons/Images/To Do-100.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Prüfplan</string>
+   </property>
+   <property name="statusTip">
+    <string>Den Prüfplan im Vollbildmodus anzeigen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
+   </property>
+  </action>
+  <action name="myActionFullscreenSpc">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Icons/Images/Line Chart-100.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>SPC Diagramm</string>
+   </property>
+   <property name="statusTip">
+    <string>Das SPC Diagramm im Vollbildmodus anzeigen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="myActionFullscreenDeviation">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Icons/Images/Normal Distribution Histogram-100.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Verteilungsdiagramm</string>
+   </property>
+   <property name="statusTip">
+    <string>Das Verteilungsdiagramm im Vollbildmodus anzeigen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="myActionLicense">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Icons/Images/Diploma 1-100.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Lizenz</string>
+   </property>
+   <property name="statusTip">
+    <string>Die Lizenzvereinbarung anzeigen</string>
+   </property>
+  </action>
+  <action name="myActionContact">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Icons/Images/Address Book-100.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Kontakt</string>
+   </property>
+   <property name="statusTip">
+    <string>Die Kontaktdaten anzeigen</string>
+   </property>
+  </action>
+  <action name="myActionResultlist">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Icons/Images/Document-100.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Ergebnisliste</string>
+   </property>
+   <property name="statusTip">
+    <string>Die Ergebnisliste anzeigen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>myLineEditActualValue</tabstop>
+  <tabstop>myLineEditSerialNo</tabstop>
+  <tabstop>myToolButtonOk</tabstop>
+  <tabstop>myToolButtonNok</tabstop>
+  <tabstop>myPushButtonForward</tabstop>
+  <tabstop>myPushButtonBackward</tabstop>
+  <tabstop>myPushButtonZoom</tabstop>
+  <tabstop>myPushButtonVideo</tabstop>
+  <tabstop>myTableViewCharacteristics</tabstop>
+  <tabstop>myScrollAreaCharacteristics</tabstop>
+  <tabstop>myScrollAreaSetpoint</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../InResources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

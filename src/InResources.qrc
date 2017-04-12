@@ -1,0 +1,23 @@
+<RCC>
+  <qresource prefix="Icons">
+    <file>Images/Down.png</file>
+    <file>Images/Plus.png</file>
+    <file>Images/Save.png</file>
+    <file>Images/Trash.png</file>
+    <file>Images/Up.png</file>
+    <file>Images/Address Book-100.png</file>
+    <file>Images/Approval-96.png</file>
+    <file>Images/Cancel-96.png</file>
+    <file>Images/Close Window-80.png</file>
+    <file>Images/Create New-100.png</file>
+    <file>Images/Diploma 1-100.png</file>
+    <file>Images/Document-100.png</file>
+    <file>Images/Edit Image-100.png</file>
+    <file>Images/Line Chart-100.png</file>
+    <file>Images/Micrometer-100.png</file>
+    <file>Images/Normal Distribution Histogram-100.png</file>
+    <file>Images/Open Folder-100.png</file>
+    <file>Images/QI_Logo.png</file>
+    <file>Images/To Do-100.png</file>
+  </qresource>
+</RCC>
