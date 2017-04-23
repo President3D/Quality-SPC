@@ -77,7 +77,7 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
             # Set up the MyMainWindow-UI from the designer
             self.setupUi(self)
             # Set the window title with the version number
-            self.myWindowTitle = 'Quality SPC - v.1.00'
+            self.myWindowTitle = 'Quality SPC - v.1.01'
             self.setWindowTitle(self.myWindowTitle)
             # Set up the variables for the image and video handling
             self.myVisibleImage = None
@@ -313,7 +313,7 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
             pass
 
 
-    # Save the cnanged table model to the csv 2
+    # Save the changed table model to the csv 2
     def saveChanges2(self):
         # Overwrite the existing file with the edited file
         try:
