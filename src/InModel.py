@@ -603,7 +603,7 @@ class MyCharacteristicsAdjustView():
 
 
     def setImageAmount(self):
-        self.mySupportedImageFormats = ['bmp', 'gif', 'jpg', 'jpeg', 'png', 'pbm', 'pgm', 'ppm', 'xbm', 'xpm']
+        self.mySupportedImageFormats = ['bmp', 'BMP', 'gif', 'GIF', 'jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'pbm', 'PBM', 'pgm', 'PGM', 'ppm', 'PPM', 'xbm', 'XBM', 'xpm', 'XPM']
 
         #Check if a folder with the same name as the file exists. If not, create it.
         self.mySeperatedPath = os.path.split(os.path.normpath(self.myParent.myTestInstructionFile[0]))
@@ -620,7 +620,7 @@ class MyCharacteristicsAdjustView():
         return self.myImageFiles
 
     def setVideoAmount(self):
-        self.mySupportedVideoFormats =['asf', 'wmv', 'dvr-ms', 'avi', 'mpg', 'mpeg', 'm1v', 'mov', 'mp4', 'm4v', 'mp4v', '3g2', '3gp2', '3gp', 'm2ts', 'flv', 'ogm', 'ogg', 'mkv', 'mka', 'ts', 'nsc', 'nsv']
+        self.mySupportedVideoFormats =['asf', 'ASF', 'wmv', 'WMF', 'dvr-ms', 'DVR-MS', 'avi', 'AVI', 'mpg', 'MPG', 'mpeg', 'MPEG', 'm1v', 'M1V', 'mov', 'MOV', 'mp4', 'MP4', 'm4v', 'M4V', 'mp4v', 'MP4V', '3g2', '3G2', '3gp2', '3GP2', '3gp', '3GP', 'm2ts', 'M2TS', 'flv', 'FLV', 'ogm', 'OGM', 'ogg', 'OGG', 'mkv', 'MKV', 'mka', 'MKA', 'ts', 'TS', 'nsc', 'NSC', 'nsv', 'NSV']
 
         #Check if a folder with the same name as the file exists. If not, create it.
         self.mySeperatedPath2 = os.path.split(os.path.normpath(self.myParent.myTestInstructionFile[0]))
