@@ -85,9 +85,12 @@ class MyResult():
         # Check if the Log folder exist. If not, create it
         if not os.path.exists(os.path.join(self.mySeperatedPath[0] + os.sep + 'Log')):
             os.makedirs(os.path.join(self.mySeperatedPath[0] + os.sep + 'Log'))
-        # Save the current result as a separate txt file to the Log folder
+        # Save the current result as a separate .csv file to the Log folder
+        self.countLog = 0
+        while (os.path.exists(os.path.join(self.mySeperatedPath[0] + os.sep + 'Log' + os.sep + str(myDate[6:10] + myDate[3:5] + myDate[0:2] + myTime[0:2] + myTime[3:5] + myTime[6:8] + '_' + self.firstInstructionName + '_' + self.myParent.myContractNumber + '_' + str(self.countLog) + '.csv')))):
+            self.countLog = self.countLog + 1
         try:
-            with open(os.path.join(self.mySeperatedPath[0] + os.sep + 'Log' + os.sep + str(myDate[6:10] + myDate[3:5] + myDate[0:2] + myTime[0:2] + myTime[3:5] + myTime[6:8] + '_' + self.firstInstructionName + '_' + self.myParent.myContractNumber + '.csv')), 'w', newline='', encoding='utf-8-sig') as myFile:
+            with open(os.path.join(self.mySeperatedPath[0] + os.sep + 'Log' + os.sep + str(myDate[6:10] + myDate[3:5] + myDate[0:2] + myTime[0:2] + myTime[3:5] + myTime[6:8] + '_' + self.firstInstructionName + '_' + self.myParent.myContractNumber + '_' + str(self.countLog) + '.csv')), 'w', newline='', encoding='utf-8-sig') as myFile:
                 myCsvWriter = csv.writer(myFile, delimiter=';')
                 myCsvWriter.writerow([str(id), str(self.myParent.myData.iloc[self.myParent.currentRow, 5].strip()), str((self.myParent.myData.iloc[self.myParent.currentRow, 6].strip()).replace(',', '.')), str(self.myParent.myData.iloc[self.myParent.currentRow, 7].strip()), str((self.myParent.myData.iloc[self.myParent.currentRow, 10].strip()).replace(',', '.')), str((self.myParent.myData.iloc[self.myParent.currentRow, 11].strip()).replace(',', '.')), str(value), str(serial), str(myDate), str(myTime), str(personnel), str(comment)])
         except Exception as e:
