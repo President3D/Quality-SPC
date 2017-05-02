@@ -77,7 +77,7 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
             # Set up the MyMainWindow-UI from the designer
             self.setupUi(self)
             # Set the window title with the version number
-            self.myWindowTitle = 'Quality SPC - v.1.01'
+            self.myWindowTitle = 'Quality SPC - v.1.02'
             self.setWindowTitle(self.myWindowTitle)
             # Set up the variables for the image and video handling
             self.myVisibleImage = None
@@ -251,6 +251,10 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
 
     def showEditWidget2(self):
         try:
+            # Clear the Tableview of the main window, so the user has to load it anew after he made changes. Important to use the automated checks.
+            self.myTableViewCharacteristics.setModel(None)
+            # Clear all elements of the main window
+            self.clearMainWindow()
             # Set up the edit widget 1/2
             self.myEditForm = MyEditWidget(self)
             # Set up the edit widget 2/2
@@ -297,6 +301,40 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
         except Exception as e:
             self.myErrorMessage(str(e))
 
+    # Clear all elements of the main window
+    def clearMainWindow(self):
+        try:
+            # Set the window title back to normal
+            self.setWindowTitle(self.myWindowTitle)
+            # Clear all labels
+            self.myLabelTestInstruction.clear()
+            self.myTextBrowserDescription.clear()
+            self.myLabelType.clear()
+            self.myLabelReference.clear()
+            self.myLabelEquipment.clear()
+            self.myLabelValue.clear()
+            self.myLabelTolerance.clear()
+            self.myLabelInterference.clear()
+            # Hide the buttons, labels and line edits
+            self.myToolButtonOk.hide()
+            self.myToolButtonNok.hide()
+            self.myPushButtonForward.hide()
+            self.myPushButtonBackward.hide()
+            self.myPushButtonZoom.hide()
+            self.myPushButtonVideo.hide()
+            self.myLabelActualValuePreview.hide()
+            self.myLineEditActualValue.hide()
+            self.myLineEditSerialNo.hide()
+            self.myLabelActualValue.hide()
+            self.myLabelSerialNo.hide()
+            # Hide the SPC and Deviation Chart at the beginning
+            self.myFrameSpc.hide()
+            self.myFrameDeviation.hide()
+            # Clear the image and imageAmount text
+            self.myLabelImage.clear()
+            self.myLabelImageAmount.setText('')
+        except Exception as e:
+            self.myErrorMessage(str(e))
 
     # Save the changed table model to the csv
     def saveChanges(self):
