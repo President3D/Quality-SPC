@@ -350,18 +350,32 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
         except:
             pass
 
-
     # Save the changed table model to the csv 2
     def saveChanges2(self):
         # Overwrite the existing file with the edited file
         try:
+            # Jump with the curser to the first cell and back to the last selected cell. Important to ensure contents do not get lost, if the user forgot to press enter after his last insertion.
+            self.myDefaultEditIndex = self.myEditForm.myTableViewEdit.model().index(0, 0)
+            # This try-except ensures that the app does not crash, if the user has not changed the initial selection of cell index(0,0)
+            try:
+                self.mySelectedEditIndex = self.myEditForm.myTableViewEdit.selectedIndexes()
+                # If the current selected column is index 2 or 9, jump one column ahead to avoid a selection change
+                if (self.mySelectedEditIndex[0].column() == 2) or (self.mySelectedEditIndex[0].column() == 9):
+                    self.mySelectedEditIndex2 = self.myEditForm.myTableViewEdit.model().index(self.mySelectedEditIndex[0].row(), self.mySelectedEditIndex[0].column() + 1)
+                else:
+                    self.mySelectedEditIndex2 = self.myEditForm.myTableViewEdit.model().index(self.mySelectedEditIndex[0].row(), self.mySelectedEditIndex[0].column())
+            except:
+                self.myDefaultEditIndex = self.myEditForm.myTableViewEdit.model().index(0, 1)
+                self.mySelectedEditIndex2 = self.myEditForm.myTableViewEdit.model().index(0, 0)
+            # The actual cursor jump to the first cell and back to the last selected cell.
+            self.myEditForm.myTableViewEdit.setCurrentIndex(self.myDefaultEditIndex)
+            self.myEditForm.myTableViewEdit.setCurrentIndex(self.mySelectedEditIndex2)
             # Save the new test instruction
             self.myTableModel.myData.to_csv(path_or_buf=os.path.abspath(self.myTestInstructionFile[0]), sep=';', encoding='utf-8-sig', mode='w', index=False, header=False)
             # Change myData from InStart to the the newData of InModel
             self.myData = self.myTableModel.myData
         except:
             QMessageBox.warning(self, 'Vorgang nicht möglich', 'Beim Speichern ist ein Fehler aufgetreten.', QMessageBox.Ok)
-
 
     # Add a new row below the current selected row
     def insertRow(self):
@@ -377,7 +391,6 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
             self.myTableModel.insertRow(self.mySelectedIndexRow)
         except Exception as e:
             self.myErrorMessage(str(e))
-
 
     # Delete the current selected row
     def removeRow(self):
@@ -465,7 +478,6 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
         except Exception as e:
             self.myErrorMessage(str(e))
 
-
     # Load a test instruction and start the ui for the contract and staff number
     def startTesting(self):
         try:
@@ -540,7 +552,6 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
         except Exception as e:
             self.myErrorMessage(str(e))
 
-
     # Runs every time, a new line of the tables is selected
     def newLineSelection(self):
         try:
@@ -589,7 +600,6 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
                 self.myTableViewCharacteristics.selectRow(self.currentRow)
         except Exception as e:
             self.myErrorMessage(str(e))
-
 
     # Check the current row if you should jump to the next or show it. Return True if you should show it. Else False.
     def checkRow(self, currentRow):
