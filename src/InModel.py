@@ -66,7 +66,11 @@ class MyCharacteristics():
             # Import the csv. Every value is interpreted as a string. 'utf-8-sig' instead 'utf-8' to ignore the byte-order-mark before the fist value
             self.myData = pd.read_csv(os.path.abspath(self.filePath), sep=';', encoding='utf-8-sig', header=None, names=self.myColumnNames, keep_default_na=False, engine='c', dtype=str)
         except Exception as e:
-            self.parent.myErrorMessage('Der Pfad und Dateiname darf keine Umlaute (ä, ö, ü) enthalten.')
+            self.parent.myErrorMessage('Entweder die Datei ist kein gülter Prüfplan\noder der Pfad enthält Umlaute (ä, ö, ü).\nPfad und Dateiname dürfen keine Umlaute entahlten.')
+            # Clear the main window, so the user can start anew without an appcrash
+            self.parent.myTableViewCharacteristics.setModel(None)
+            self.parent.clearMainWindow()
+            return
 
         self.myData.columns = self.myColumnNames
         # Generate a list with the row numbers

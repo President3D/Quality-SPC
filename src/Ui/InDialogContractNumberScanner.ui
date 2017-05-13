@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>myDialogContractNumberScanner</class>
+ <widget class="QDialog" name="myDialogContractNumberScanner">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>340</width>
+    <height>110</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Auftrag Nr. eingeben - Scanner</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normalon>:/Icons/Images/Micrometer-100.png</normalon>
+   </iconset>
+  </property>
+  <property name="accessibleName">
+   <string>myDialogContractNumberScanner</string>
+  </property>
+  <layout class="QGridLayout" name="myGridLayoutDialogContractNumber">
+   <item row="0" column="0">
+    <widget class="QLabel" name="myLabelContractNumber">
+     <property name="accessibleName">
+      <string>myLabelContractNumber</string>
+     </property>
+     <property name="text">
+      <string>Auftrag Nr. scannen:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="myLineEditScanContractNumber">
+     <property name="minimumSize">
+      <size>
+       <width>200</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="accessibleName">
+      <string>myLineEditScanContractNumber</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QDialogButtonBox" name="myButtonBoxDialogContractNumberScanner">
+     <property name="accessibleName">
+      <string>myButtonBoxDialogContractNumberScanner</string>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../InResources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>myButtonBoxDialogContractNumberScanner</sender>
+   <signal>accepted()</signal>
+   <receiver>myDialogContractNumberScanner</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>myButtonBoxDialogContractNumberScanner</sender>
+   <signal>rejected()</signal>
+   <receiver>myDialogContractNumberScanner</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

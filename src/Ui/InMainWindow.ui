@@ -2726,6 +2726,7 @@ QHeaderView::section:checked
      <string>Datei</string>
     </property>
     <addaction name="myActionStartTesting"/>
+    <addaction name="myActionStartTestingScanner"/>
     <addaction name="separator"/>
     <addaction name="myActionNewTestInstruction"/>
     <addaction name="myActionEditTestInstruction"/>
@@ -2770,7 +2771,7 @@ QHeaderView::section:checked
     </iconset>
    </property>
    <property name="text">
-    <string>Prüfplan öffnen</string>
+    <string>Prüfplan öffnen - Manuell</string>
    </property>
    <property name="statusTip">
     <string>Die Prüfungen mit einem vorhandenen Prüfplan beginnen</string>
@@ -2931,6 +2932,22 @@ QHeaderView::section:checked
    </property>
    <property name="shortcut">
     <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="myActionStartTestingScanner">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Icons/Images/Barcode-96.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Prüfplan öffnen - Scanner</string>
+   </property>
+   <property name="statusTip">
+    <string>Die Prüfungen mit einem vorhandenen Prüfplan beginnen, mit Scannerunterstützung</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
    </property>
   </action>
  </widget>

@@ -45,7 +45,7 @@ from PyQt5.QtCore import QUrl, QModelIndex, QLocale, QTranslator, QLibraryInfo
 from Ui.InMainWindow import Ui_myMainWindow
 
 # Own Dialogs
-from InDialog import MyDialogOpenTestInstruction, MyDialogToleranceExceeded
+from InDialog import MyDialogOpenTestInstruction, MyDialogToleranceExceeded, MyDialogOpenTestInstructionScanner, MyDialogOpenTestInstructionScanner2, MyDialogOpenTestInstructionScanner3
 
 # Own Widgets
 from InWidget import MyEditWidget
@@ -77,7 +77,7 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
             # Set up the MyMainWindow-UI from the designer
             self.setupUi(self)
             # Set the window title with the version number
-            self.myWindowTitle = 'Quality SPC - v.1.02'
+            self.myWindowTitle = 'Quality SPC - v.1.03'
             self.setWindowTitle(self.myWindowTitle)
             # Set up the variables for the image and video handling
             self.myVisibleImage = None
@@ -102,6 +102,7 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
             self.myLineEditActualValue.textChanged.connect(self.convertValue)
             # Set up the signals and slots of the menubar
             self.myActionStartTesting.triggered.connect(self.startTesting)
+            self.myActionStartTestingScanner.triggered.connect(self.startTestingScanner)
             self.myActionQuit.triggered.connect(self.closeEvent)
             self.myActionFullscreenTi.triggered.connect(self.showTestInstructionWidget)
             self.myActionFullscreenSpc.triggered.connect(self.showSpcWidget)
@@ -551,6 +552,43 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
             self.newLineSelection()
         except Exception as e:
             self.myErrorMessage(str(e))
+
+    # Load the test instruction with barcode-scanner support
+    def startTestingScanner(self):
+        try:
+            # Set up the dialog to scan the test instruction path or assignment number
+            self.myDialogOpenTestInstructionScanner = MyDialogOpenTestInstructionScanner(self)
+            self.myDialogOpenTestInstructionScanner.startUi()
+        except Exception as e:
+            self.myErrorMessage(str(e))
+
+    # Load the contract number with barcode-scanner support
+    def startTestingScanner2(self, myTestInstructionPath):
+        try:
+            # Assign the scanned test instruction path the the tuple which holds it during manual opening
+            self.myTestInstructionFile = (os.path.abspath(myTestInstructionPath), 'Prüfplan (*.csv)')
+            # Set up the dialog to scan the contract number
+            self.myDialogOpenTestInstructionScanner2 = MyDialogOpenTestInstructionScanner2(self)
+            self.myDialogOpenTestInstructionScanner2.startUi()
+        except Exception as e:
+            self.myErrorMessage(str(e))
+
+    # Load the personnel number with barcode-scanner support
+    def startTestingScanner3(self, myContractNumber):
+        try:
+            self.myContractNumber = myContractNumber
+            self.myDialogOpenTestInstructionScanner3 = MyDialogOpenTestInstructionScanner3(self)
+            self.myDialogOpenTestInstructionScanner3.startUi()
+        except Exception as e:
+            self.myErrorMessage(str(e))
+
+    # Root the Programm to the same result as startTesting2
+    def startTestingScanner4(self, myStaffNumber):
+        self.myStaffNumber = myStaffNumber
+        # Add the contract number and name to the window title
+        self.setWindowTitle(self.myWindowTitle + ' - Name: ' + self.myStaffNumber + ' - Auftrag: ' + self.myContractNumber)
+        # Start the MyCharacteristics class
+        self.myCharacteristics = MyCharacteristics(self, self.myTestInstructionFile[0])
 
     # Runs every time, a new line of the tables is selected
     def newLineSelection(self):

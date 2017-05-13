@@ -32,6 +32,12 @@
 # Sie sollten eine Kopie der GNU General Public License zusammen mit diesem
 # Programm erhalten haben. Wenn nicht, siehe <http://www.gnu.org/licenses/>.
 
+# System specific parameters and functions
+import sys, os
+
+# csv for the csv file handling
+import csv
+
 # PyQt Classes for the UI
 from PyQt5.QtWidgets import QDialog, QMessageBox, QWidget
 
@@ -39,6 +45,9 @@ from PyQt5.QtWidgets import QDialog, QMessageBox, QWidget
 from Ui.InDialogOpenTestInstruction import Ui_myDialogOpenTestInstruction
 from Ui.InDialogImportError import Ui_myDialogImportError
 from Ui.InDialogToleranceExceeded import Ui_myDialogToleranceExceeded
+from Ui.InDialogOpenTestInstructionScanner import Ui_myDialogOpenTestInstructionScanner
+from Ui.InDialogContractNumberScanner import Ui_myDialogContractNumberScanner
+from Ui.InDialogPersonnelNumberScanner import Ui_myDialogPersonnelNumberScanner
 
 
 # The dialog for the staff number and contract number
@@ -61,7 +70,7 @@ class MyDialogOpenTestInstruction(QDialog, Ui_myDialogOpenTestInstruction):
             self.show()
         else:
             # Start the next method in InStart
-            self.myParent.startTesting2(str(self.myLineEditContractNumber.text()), str(self.myLineEditStaffNumber.text()))
+            self.myParent.startTesting2(str(self.myLineEditContractNumber.text()).strip(), str(self.myLineEditStaffNumber.text()).strip())
 
 
 # The dialog for the import errors
@@ -129,3 +138,105 @@ class MyDialogToleranceExceeded(QDialog, Ui_myDialogToleranceExceeded):
         except:
             self.myExplanationText = ''
         self.myParent.checkQualitative3(str(self.myExplanationText))
+
+
+# The dialog to scan the test instruction path or assignment number
+class MyDialogOpenTestInstructionScanner(QDialog, Ui_myDialogOpenTestInstructionScanner):
+    def __init__(self, myParent):
+        super(MyDialogOpenTestInstructionScanner, self).__init__()
+        self.myParent = myParent
+
+    def startUi(self):
+        # Set up the ui from designer, minimum size
+        self.setupUi(self)
+        self.resize(0, 0)
+        self.show()
+        # Check which button the user presses
+        self.myButtonBoxOpenTestInstructionScanner.accepted.connect(self.ok)
+
+    def ok(self):
+        # Error message, if there is no input or only space
+        if (str(self.myLineEditScanPath.text()) == '') or (str(self.myLineEditScanPath.text()).isspace() == True):
+            self.myScanPathMessage = QMessageBox.warning(self, 'Pfad scannen', 'Bitte scannen Sie einen Pfad\noder eine Zuordnungsnummer.', QMessageBox.Ok)
+            self.show()
+        # Validate if the file is a .csv file and start testing
+        elif (str(self.myLineEditScanPath.text())[str(self.myLineEditScanPath.text()).rfind('.'):].lower() == '.csv'):
+            self.myParent.startTestingScanner2(str(self.myLineEditScanPath.text()))
+        # Check if there is a path in the assignment file, according to the non-valid-path-input.
+        else:
+            # Print a warning, if there is no assignment file
+            if not os.path.exists(os.path.split(os.path.normpath(sys.argv[0]))[0] + os.sep + 'Assignment.csv'):
+                self.myAssignmentPathMessage = QMessageBox.warning(self, 'Pfad scannen', 'Die Eingabe ist kein gültiger Pfad und\nes existiert keine Zuordnungstabelle.', QMessageBox.Ok)
+                self.show()
+            else:
+                # Append all data in the assignment file to the dictionary self.myAssignmentDict
+                self.myAssignmentDict = {}
+                with open(os.path.split(os.path.normpath(sys.argv[0]))[0] + os.sep + 'Assignment.csv', 'r', encoding='utf-8-sig') as myFile:
+                    csvReader = csv.reader(myFile, delimiter=';')
+                    for row in csvReader:
+                        self.myAssignmentDict[str(row[0]).strip()] = os.path.abspath(str(row[1]).strip())
+                # Check if the assignment file contains the assignment to the user input
+                if not (str(self.myLineEditScanPath.text()).strip() in self.myAssignmentDict):
+                    self.myAssignmentDictMessage = QMessageBox.warning(self, 'Pfad scannen', 'Die Eingabe ist kein gültiger Pfad und\nwurde in der Zuordnungstabelle nicht gefunden.', QMessageBox.Ok)
+                    self.show()
+                # Validate if the file is a .csv file and start testing
+                else:
+                    if not self.myAssignmentDict[str(self.myLineEditScanPath.text()).strip()][self.myAssignmentDict[str(self.myLineEditScanPath.text()).strip()].rfind('.'):].lower() == '.csv':
+                        self.myAssignmentDictMessage2 = QMessageBox.warning(self, 'Pfad scannen', 'Der Pfad in der Zuordnungstabelle\nist ungültig.', QMessageBox.Ok)
+                        self.show()
+                    else:
+                        self.myParent.startTestingScanner2(os.path.abspath(self.myAssignmentDict[str(self.myLineEditScanPath.text()).strip()]))
+
+# The dialog to scan the contract number
+class MyDialogOpenTestInstructionScanner2(QDialog, Ui_myDialogContractNumberScanner):
+    def __init__(self, myParent):
+        super(MyDialogOpenTestInstructionScanner2, self).__init__()
+        self.myParent = myParent
+
+    def startUi(self):
+        # Set up the ui from designer, minimum size
+        self.setupUi(self)
+        self.resize(0, 0)
+        self.show()
+        # Check which button the user presses
+        self.myButtonBoxDialogContractNumberScanner.accepted.connect(self.ok)
+
+    def ok(self):
+        if (str(self.myLineEditScanContractNumber.text()) == '') or (str(self.myLineEditScanContractNumber.text()).isspace() == True):
+            self.myContractNumberScanMessage = QMessageBox.warning(self, 'Auftragsnummer scannen', 'Bitte scannen Sie die Auftragsnummer ein.', QMessageBox.Ok)
+            self.show()
+        else:
+            # The contract number must differ from the material number.
+            self.materialNumberFromPath = self.myParent.myTestInstructionFile[0][self.myParent.myTestInstructionFile[0].rfind(os.sep) + 1:]
+            if '_' in self.materialNumberFromPath:
+                self.materialNumberFromPath = self.materialNumberFromPath[:self.materialNumberFromPath.find('_')]
+            else:
+                self.materialNumberFromPath = self.materialNumberFromPath[:self.materialNumberFromPath.find('.')]
+            if (str(self.materialNumberFromPath) == str(self.myLineEditScanContractNumber.text().strip())):
+                self.myContractNumberScanMessage2 = QMessageBox.warning(self, 'Auftragsnummer scannen', 'Die Auftragsnummer muss sich von\nder Materialnummer unterscheiden.', QMessageBox.Ok)
+                self.show()
+            else:
+                # Start the next method in InStart
+                self.myParent.startTestingScanner3(str(self.myLineEditScanContractNumber.text()).strip())
+
+# The dialog to scan the staff number
+class MyDialogOpenTestInstructionScanner3(QDialog, Ui_myDialogPersonnelNumberScanner):
+    def __init__(self, myParent):
+        super(MyDialogOpenTestInstructionScanner3, self).__init__()
+        self.myParent = myParent
+
+    def startUi(self):
+        # Set up the ui from designer, minimum size
+        self.setupUi(self)
+        self.resize(0, 0)
+        self.show()
+        # Check which button the user presses
+        self.myButtonBoxDialogPersonnelNumberScanner.accepted.connect(self.ok)
+
+    def ok(self):
+        if (str(self.myLineEditScanPersonnelNumber.text()) == '') or (str(self.myLineEditScanPersonnelNumber.text()).isspace() == True):
+            self.myPersonnelNumberScanMessage = QMessageBox.warning(self, 'Name oder Personalnummer scannen', 'Bitte scannen Sie ihren Namen/\nihre Personal-Nr. ein.', QMessageBox.Ok)
+            self.show()
+        else:
+            # Start the next method in InStart
+            self.myParent.startTestingScanner4(str(self.myLineEditScanPersonnelNumber.text().strip()))

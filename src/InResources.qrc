@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="Icons">
     <file>Images/Down.png</file>
+    <file>Images/Barcode-96.png</file>
     <file>Images/Plus.png</file>
     <file>Images/Save.png</file>
     <file>Images/Trash.png</file>
