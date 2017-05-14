@@ -207,7 +207,7 @@ class MyDialogOpenTestInstructionScanner2(QDialog, Ui_myDialogContractNumberScan
             self.show()
         else:
             # The contract number must differ from the material number.
-            self.materialNumberFromPath = self.myParent.myTestInstructionFile[0][self.myParent.myTestInstructionFile[0].rfind(os.sep) + 1:]
+            self.materialNumberFromPath = os.path.abspath(self.myParent.myTestInstructionFile[0])[os.path.abspath(self.myParent.myTestInstructionFile[0]).rfind(os.sep) + 1:]
             if '_' in self.materialNumberFromPath:
                 self.materialNumberFromPath = self.materialNumberFromPath[:self.materialNumberFromPath.find('_')]
             else:

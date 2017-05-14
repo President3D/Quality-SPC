@@ -77,7 +77,7 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
             # Set up the MyMainWindow-UI from the designer
             self.setupUi(self)
             # Set the window title with the version number
-            self.myWindowTitle = 'Quality SPC - v.1.03'
+            self.myWindowTitle = 'Quality SPC - v.1.04'
             self.setWindowTitle(self.myWindowTitle)
             # Set up the variables for the image and video handling
             self.myVisibleImage = None
@@ -528,6 +528,16 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
 
     def startTesting4(self):
         try:
+            # Read the Material-No from the file name
+            self.myMatNo = os.path.abspath(self.myTestInstructionFile[0])[os.path.abspath(self.myTestInstructionFile[0]).rfind(os.sep) + 1:]
+            if '_' in self.myMatNo:
+                self.myMatNo = self.myMatNo[:self.myMatNo.find('_')]
+            else:
+                self.myMatNo = self.myMatNo[:self.myMatNo.find('.')]
+            # Set up the dict for the json output in the log file
+            self.myResultLog = {}
+            # Append the head data to the myResultLog dict
+            self.myResultLog['0'] = {'Material_No.' : str(self.myMatNo), 'Contract_No.' : str(self.myContractNumber)}
             # Set up the default values of the variables
             self.currentRow = 0
             self.currentSerialNo = {}
@@ -968,7 +978,6 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
                 # Only show the deviation chart, if there is enough data. Else do not show it.
                 if self.showDeviation:
                     self.myFrameDeviation.show()
-
             # Proceed to the next row, if all samples are met
             else:
                 # Reset the currentSampleValue
@@ -1070,9 +1079,12 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
                 else:
                     self.currentRow = self.currentRow + 1
                 self.showCurrentLine = self.checkRow(self.currentRow)
-            # Show Message if the user reached the last line
+            # If the user reached the last line, save the json log file and show the end message
             if self.showCurrentLine != True:
                 self.currentSerialNo = {}
+                # Save the json log file
+                self.myResult.saveResultLog2('{:%Y%m%d%H%M%S}'.format(datetime.now()))
+                # Show the end message
                 self.endMessage()
             else:
                 # Save the control csv with the edited frequency

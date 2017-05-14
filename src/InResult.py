@@ -38,8 +38,8 @@ import os
 # pandas for csv handling
 import pandas as pd
 
-# csv for the new csv file
-import csv
+# json for the json log file
+import json
 
 
 # Class for handling the result csv file
@@ -82,17 +82,88 @@ class MyResult():
             self.myResultData.to_csv(path_or_buf=os.path.abspath(self.myResultDataPath), sep=';', encoding='utf-8-sig', mode='w', index=False, header=True)
         except Exception as e:
             self.myParent.myErrorMessage(str(e))
+        # Call the function for the log file
+        try:
+            self.saveResultLog(id, value, serial, myDate, myTime, personnel, comment)
+        except Exception as e:
+            self.myParent.myErrorMessage(str(e))
+
+    # Add the result to to dict for the json file in the log folder
+    def saveResultLog(self, id, value, serial, myDate, myTime, personnel, comment):
+        # Format the id to int to fit for json
+        self.myId = int(id)
+        # Format the description to fit for json
+        if str(self.myParent.myData.iloc[self.myParent.currentRow, 5].strip()) != '':
+            self.myDescription = str(self.myParent.myData.iloc[self.myParent.currentRow, 5].strip())
+        else:
+            self.myDescription = None
+        # Format the nominal value to fit for json
+        if str((self.myParent.myData.iloc[self.myParent.currentRow, 6].strip()).replace(',', '.')) != '':
+            self.myNominalValue = float((self.myParent.myData.iloc[self.myParent.currentRow, 6].strip()).replace(',', '.'))
+        else:
+            self.myNominalValue = None
+        # Format the unit to fit for json
+        if str(self.myParent.myData.iloc[self.myParent.currentRow, 7].strip()) != '':
+            self.myUnit = str(self.myParent.myData.iloc[self.myParent.currentRow, 7].strip())
+        else:
+            self.myUnit = None
+        # Format the upper tolerance to fit for json
+        if str((self.myParent.myData.iloc[self.myParent.currentRow, 10].strip()).replace(',', '.')) != '':
+            self.myUpperTolerance = float((self.myParent.myData.iloc[self.myParent.currentRow, 10].strip()).replace(',', '.'))
+        else:
+            self.myUpperTolerance = None
+        # Format the lower tolerance to fit for json
+        if str((self.myParent.myData.iloc[self.myParent.currentRow, 11].strip()).replace(',', '.')) != '':
+            self.myLowerTolerance = float((self.myParent.myData.iloc[self.myParent.currentRow, 11].strip()).replace(',', '.'))
+        else:
+            self.myLowerTolerance = None
+        # Format the result to fit for json
+        try:
+            self.myResult = float(value)
+        except:
+            if str(value) == 'i.O.':
+                self.myResult = True
+            else:
+                self.myResult = False
+        # Format the serial number to fit for json
+        if str(serial) != '':
+            self.mySerialNo = str(serial)
+        else:
+            self.mySerialNo = None
+        # Format the date to fit for json
+        self.myDate = str(myDate)
+        # Format the time to fit for json
+        self.myTime = str(myTime)
+        # Format the staff number to fit for json
+        self.myStaffNo = str(personnel)
+        # Format the comment to fit for json
+        if str(comment) != '':
+            self.myComment = str(comment)
+        else:
+            self.myComment = None
+        # Detect the current body-number of the dict for the json log file
+        self.counter = 1
+        while str(self.counter) in self.myParent.myResultLog:
+            self.counter = self.counter + 1
+        # Add the data to the dict for the json file
+        self.myParent.myResultLog[str(self.counter)] = {'ID' : self.myId, 'Description' : self.myDescription, 'Nominal_Value' : self.myNominalValue, 'Unit' : self.myUnit, 'Upper_Tolerance' : self.myUpperTolerance, 'Lower_Tolerance' : self.myLowerTolerance, 'Result' : self.myResult, 'Serial_No' : self.mySerialNo, 'Date' : self.myDate, 'Time' : self.myTime, 'Staff' : self.myStaffNo, 'Comment' : self.myComment}
+
+    # Save the result as json file to the hd.
+    def saveResultLog2(self, timestamp):
+        self.saveTimeStamp = str(timestamp)
         # Check if the Log folder exist. If not, create it
         if not os.path.exists(os.path.join(self.mySeperatedPath[0] + os.sep + 'Log')):
             os.makedirs(os.path.join(self.mySeperatedPath[0] + os.sep + 'Log'))
-        # Save the current result as a separate .csv file to the Log folder
+        # Save the json file in the log folder
         self.countLog = 0
-        while (os.path.exists(os.path.join(self.mySeperatedPath[0] + os.sep + 'Log' + os.sep + str(myDate[6:10] + myDate[3:5] + myDate[0:2] + myTime[0:2] + myTime[3:5] + myTime[6:8] + '_' + self.firstInstructionName + '_' + self.myParent.myContractNumber + '_' + str(self.countLog) + '.csv')))):
+        while (os.path.exists(os.path.join(self.mySeperatedPath[0] + os.sep + 'Log' + os.sep + self.saveTimeStamp + '_' + self.firstInstructionName + '_' + self.myParent.myContractNumber + '_' + str(self.countLog) + '.json'))):
             self.countLog = self.countLog + 1
         try:
-            with open(os.path.join(self.mySeperatedPath[0] + os.sep + 'Log' + os.sep + str(myDate[6:10] + myDate[3:5] + myDate[0:2] + myTime[0:2] + myTime[3:5] + myTime[6:8] + '_' + self.firstInstructionName + '_' + self.myParent.myContractNumber + '_' + str(self.countLog) + '.csv')), 'w', newline='', encoding='utf-8-sig') as myFile:
-                myCsvWriter = csv.writer(myFile, delimiter=';')
-                myCsvWriter.writerow([str(id), str(self.myParent.myData.iloc[self.myParent.currentRow, 5].strip()), str((self.myParent.myData.iloc[self.myParent.currentRow, 6].strip()).replace(',', '.')), str(self.myParent.myData.iloc[self.myParent.currentRow, 7].strip()), str((self.myParent.myData.iloc[self.myParent.currentRow, 10].strip()).replace(',', '.')), str((self.myParent.myData.iloc[self.myParent.currentRow, 11].strip()).replace(',', '.')), str(value), str(serial), str(myDate), str(myTime), str(personnel), str(comment)])
+            with open(os.path.join(self.mySeperatedPath[0] + os.sep + 'Log' + os.sep + self.saveTimeStamp + '_' + self.firstInstructionName + '_' + self.myParent.myContractNumber + '_' + str(self.countLog) + '.json'), 'w', newline='', encoding='utf-8-sig') as myFile:
+                # Create the json file
+                myJsonFile = json.dumps(self.myParent.myResultLog, sort_keys=True, ensure_ascii=False, indent=4)
+                # Write the json file to the hd
+                myFile.write(myJsonFile)
         except Exception as e:
             self.myParent.myErrorMessage(str(e))
 
