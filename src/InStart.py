@@ -793,6 +793,8 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
             self.myLabelActualValuePreview.show()
             # Suggest serial no if available
             self.showSerialNo()
+            # Set the focus to the input line for a better usability
+            self.myLineEditActualValue.setFocus()
             # Update the date of the spc and deviation charts and show them
             # Update and show the Spc plot
             self.showSpc = self.spcPlot.update_figure(self.myResult.returnResult(), float(((self.myData.iloc[self.currentRow, 12]).strip()).replace(',', '.')), float(((self.myData.iloc[self.currentRow, 13]).strip()).replace(',', '.')))
