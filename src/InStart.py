@@ -37,9 +37,9 @@
 import sys, os
 
 # PyQt Classes for the UI
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QGridLayout
-from PyQt5.QtGui import QPixmap, QPaintDevice
-from PyQt5.QtCore import QUrl, QModelIndex, QLocale, QTranslator, QLibraryInfo
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QGridLayout, QShortcut
+from PyQt5.QtGui import QPixmap, QPaintDevice, QKeySequence
+from PyQt5.QtCore import QUrl, QModelIndex, QLocale, QTranslator, QLibraryInfo, pyqtSlot
 
 # Own UIs
 from Ui.InMainWindow import Ui_myMainWindow
@@ -77,7 +77,7 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
             # Set up the MyMainWindow-UI from the designer
             self.setupUi(self)
             # Set the window title with the version number
-            self.myWindowTitle = 'Quality SPC - v.1.04'
+            self.myWindowTitle = 'Quality SPC - v.1.05'
             self.setWindowTitle(self.myWindowTitle)
             # Set up the variables for the image and video handling
             self.myVisibleImage = None
@@ -119,6 +119,9 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
             self.myPushButtonVideo.clicked.connect(self.startVideo)
             self.myToolButtonOk.clicked.connect(self.checkActualValueOk)
             self.myToolButtonNok.clicked.connect(self.checkActualValueNok)
+            # Set up shortcuts with corresponding slots
+            self.shortcutButtonOk = QShortcut(QKeySequence("Enter"), self)
+            self.shortcutButtonOk.activated.connect(self.buttonOkShortcut)
             # Set up the SPC chart
             self.spcPlot = MySpcCanvas(self, self.myFrameSpc, width=self.myFrameSpc.width(), height=self.myFrameSpc.height(),dpi=QPaintDevice.logicalDpiX(self))
             self.myGridLayoutSpc.addWidget(self.spcPlot)
@@ -141,6 +144,12 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
         except Exception as e:
             self.myErrorMessage(str(e))
 
+    # The slots to handle the shortcuts
+    @pyqtSlot()
+    def buttonOkShortcut(self):
+        # Only apply the action, if the button is visible
+        if self.myToolButtonOk.isVisible():
+            self.checkActualValueOk()
 
     # To hide the content of the actual value groupbox, spc chart and deviation chart
     def hideActualValue(self):
