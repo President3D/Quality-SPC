@@ -77,7 +77,7 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
             # Set up the MyMainWindow-UI from the designer
             self.setupUi(self)
             # Set the window title with the version number
-            self.myWindowTitle = 'Quality SPC - v.1.06'
+            self.myWindowTitle = 'Quality SPC - v.1.07'
             self.setWindowTitle(self.myWindowTitle)
             # Set up the variables for the image and video handling
             self.myVisibleImage = None
@@ -546,7 +546,7 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
             # Set up the dict for the json output in the log file
             self.myResultLog = {}
             # Append the head data to the myResultLog dict
-            self.myResultLog['0'] = {'Material_No.' : str(self.myMatNo), 'Contract_No.' : str(self.myContractNumber)}
+            self.myResultLog['0'] = {'Material_No.' : str(self.myMatNo), 'Contract_No.' : str(self.myContractNumber), 'Staff' : str(self.myStaffNumber)}
             # Set up the default values of the variables
             self.currentRow = 0
             self.currentSerialNo = {}

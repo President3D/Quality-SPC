@@ -84,12 +84,12 @@ class MyResult():
             self.myParent.myErrorMessage(str(e))
         # Call the function for the log file
         try:
-            self.saveResultLog(id, value, serial, myDate, myTime, personnel, comment)
+            self.saveResultLog(id, value, serial, myDate, myTime, comment)
         except Exception as e:
             self.myParent.myErrorMessage(str(e))
 
     # Add the result to to dict for the json file in the log folder
-    def saveResultLog(self, id, value, serial, myDate, myTime, personnel, comment):
+    def saveResultLog(self, id, value, serial, myDate, myTime, comment):
         # Format the id to int to fit for json
         self.myId = int(id)
         # Format the description to fit for json
@@ -107,16 +107,13 @@ class MyResult():
             self.myUnit = str(self.myParent.myData.iloc[self.myParent.currentRow, 7].strip())
         else:
             self.myUnit = None
-        # Format the upper tolerance to fit for json
-        if str((self.myParent.myData.iloc[self.myParent.currentRow, 10].strip()).replace(',', '.')) != '':
+        # Format the upper and lower tolerance to fit for json
+        if (str((self.myParent.myData.iloc[self.myParent.currentRow, 10].strip()).replace(',', '.')) != '') and (str((self.myParent.myData.iloc[self.myParent.currentRow, 11].strip()).replace(',', '.')) != ''):
             self.myUpperTolerance = float((self.myParent.myData.iloc[self.myParent.currentRow, 10].strip()).replace(',', '.'))
-        else:
-            self.myUpperTolerance = None
-        # Format the lower tolerance to fit for json
-        if str((self.myParent.myData.iloc[self.myParent.currentRow, 11].strip()).replace(',', '.')) != '':
             self.myLowerTolerance = float((self.myParent.myData.iloc[self.myParent.currentRow, 11].strip()).replace(',', '.'))
         else:
-            self.myLowerTolerance = None
+            self.myUpperTolerance = True
+            self.myLowerTolerance = True
         # Format the result to fit for json
         try:
             self.myResult = float(value)
@@ -134,19 +131,26 @@ class MyResult():
         self.myDate = str(myDate)
         # Format the time to fit for json
         self.myTime = str(myTime)
-        # Format the staff number to fit for json
-        self.myStaffNo = str(personnel)
         # Format the comment to fit for json
         if str(comment) != '':
             self.myComment = str(comment)
         else:
             self.myComment = None
+        # The datatype of the value and tolerances must be the same.
+        if (isinstance(self.myUpperTolerance, bool)) and (isinstance(self.myResult, float)):
+            self.myUpperTolerance = str(self.myUpperTolerance)
+            self.myLowerTolerance = str(self.myLowerTolerance)
+            self.myResult = str(self.myResult)
+        elif (isinstance(self.myUpperTolerance, float)) and (isinstance(self.myResult, bool)):
+            self.myUpperTolerance = str(self.myUpperTolerance)
+            self.myLowerTolerance = str(self.myLowerTolerance)
+            self.myResult = str(self.myResult)
         # Detect the current body-number of the dict for the json log file
         self.counter = 1
         while str(self.counter) in self.myParent.myResultLog:
             self.counter = self.counter + 1
         # Add the data to the dict for the json file
-        self.myParent.myResultLog[str(self.counter)] = {'ID' : self.myId, 'Description' : self.myDescription, 'Nominal_Value' : self.myNominalValue, 'Unit' : self.myUnit, 'Upper_Tolerance' : self.myUpperTolerance, 'Lower_Tolerance' : self.myLowerTolerance, 'Result' : self.myResult, 'Serial_No' : self.mySerialNo, 'Date' : self.myDate, 'Time' : self.myTime, 'Staff' : self.myStaffNo, 'Comment' : self.myComment}
+        self.myParent.myResultLog[str(self.counter)] = {'ID' : self.myId, 'Description' : self.myDescription, 'Nominal_Value' : self.myNominalValue, 'Unit' : self.myUnit, 'Upper_Tolerance' : self.myUpperTolerance, 'Lower_Tolerance' : self.myLowerTolerance, 'Result' : self.myResult, 'Serial_No' : self.mySerialNo, 'Date' : self.myDate, 'Time' : self.myTime, 'Comment' : self.myComment}
 
     # Save the result as json file to the hd.
     def saveResultLog2(self, timestamp):
@@ -161,7 +165,7 @@ class MyResult():
         try:
             with open(os.path.join(self.mySeperatedPath[0] + os.sep + 'Log' + os.sep + self.saveTimeStamp + '_' + self.firstInstructionName + '_' + self.myParent.myContractNumber + '_' + str(self.countLog) + '.json'), 'w', newline='', encoding='utf-8-sig') as myFile:
                 # Create the json file
-                myJsonFile = json.dumps(self.myParent.myResultLog, sort_keys=True, ensure_ascii=False, indent=4)
+                myJsonFile = json.dumps(self.myParent.myResultLog, sort_keys=False, ensure_ascii=False, indent=4)
                 # Write the json file to the hd
                 myFile.write(myJsonFile)
         except Exception as e:
