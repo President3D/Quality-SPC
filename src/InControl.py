@@ -38,6 +38,9 @@ import os
 # pandas for csv handling
 import pandas as pd
 
+# for the csv file
+import csv
+
 
 # Class for handling the control csv file
 class MyControl():
@@ -79,17 +82,16 @@ class MyControl():
                     self.myParent.myErrorMessage(str(e))
         # If the file not exists. Create it with default value 0
         except Exception as e:
-            self.myControlData = None
-            self.myControlData = self.myParent.myData[[0]]
-            # Turn of the copy warning of pandas. We know it is a copy.
-            self.myControlData.is_copy = False
-            # Add the frequency-Column with 0 in each row as start value
-            self.myControlData.iloc[:][1] = 0
-            self.myControlData.rename(columns = {1 : 'Frequency'}, inplace = True)
+            # Create the new control csv
             try:
-                self.myControlData.to_csv(path_or_buf=os.path.abspath(self.myControlDataPath), sep=';', encoding='utf-8-sig', mode='w', index=False, header=False)
+                with open(os.path.abspath(self.myControlDataPath), 'w', newline='', encoding='utf-8-sig') as myFile:
+                    myCsvWriter = csv.writer(myFile, delimiter=';')
+                    for line in range(0, len(self.myParent.myData)):
+                        myCsvWriter.writerow([str(self.myParent.myData.iloc[line, 0]), 0])
             except Exception as e:
                 self.myParent.myErrorMessage(str(e))
+            # load the new created csv by running importCsv again
+            self.importCsv()
 
     # Retun the Frequency of the current row
     def returnFrequency(self, id):
