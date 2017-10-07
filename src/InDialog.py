@@ -169,12 +169,37 @@ class MyDialogOpenTestInstructionScanner(QDialog, Ui_myDialogOpenTestInstruction
                 self.myAssignmentPathMessage = QMessageBox.warning(self, 'Pfad scannen', 'Die Eingabe ist kein gültiger Pfad und\nes existiert keine Zuordnungstabelle.', QMessageBox.Ok)
                 self.show()
             else:
-                # Append all data in the assignment file to the dictionary self.myAssignmentDict
-                self.myAssignmentDict = {}
+                # Check if the assignment file contains a link to another file
+                self.myPathToCsv = None
                 with open(os.path.split(os.path.normpath(sys.argv[0]))[0] + os.sep + 'Assignment.csv', 'r', encoding='utf-8-sig') as myFile:
                     csvReader = csv.reader(myFile, delimiter=';')
                     for row in csvReader:
-                        self.myAssignmentDict[str(row[0]).strip()] = os.path.abspath(str(row[1]).strip())
+                        if os.path.exists(str(row[0]).strip()):
+                            self.myPathToCsv = str(row[0]).strip()
+
+                # Append all data in the assignment file to the dictionary self.myAssignmentDict
+                self.myAssignmentDict = {}
+                # Decide if the assignment file links to another one or contains the paths.
+                if self.myPathToCsv != None:
+                    try:
+                        with open(self.myPathToCsv, 'r', encoding='utf-8-sig') as myFile:
+                            csvReader = csv.reader(myFile, delimiter=';')
+                            # Check if the assignment file contains the assignment to the user input
+                            for row in csvReader:
+                                self.myAssignmentDict[str(row[0]).strip()] = os.path.abspath(str(row[1]).strip())
+                    except:
+                        QMessageBox.critical(self, 'Zuordnungstabelle fehlerheft', 'Die Zuordnungstabelle ist fehlerhaft. \nWenden Sie sich an den Administrator.', QMessageBox.Ok)
+                        pass
+                else:
+                    try:
+                        with open(os.path.split(os.path.normpath(sys.argv[0]))[0] + os.sep + 'Assignment.csv', 'r', encoding='utf-8-sig') as myFile:
+                            csvReader = csv.reader(myFile, delimiter=';')
+                            # Check if the assignment file contains the assignment to the user input
+                            for row in csvReader:
+                                self.myAssignmentDict[str(row[0]).strip()] = os.path.abspath(str(row[1]).strip())
+                    except:
+                        QMessageBox.critical(self, 'Zuordnungstabelle fehlerheft', 'Die Zuordnungstabelle ist fehlerhaft. \nWenden Sie sich an den Administrator.', QMessageBox.Ok)
+                        pass
                 # Check if the assignment file contains the assignment to the user input
                 if not (str(self.myLineEditScanPath.text()).strip() in self.myAssignmentDict):
                     self.myAssignmentDictMessage = QMessageBox.warning(self, 'Pfad scannen', 'Die Eingabe ist kein gültiger Pfad und\nwurde in der Zuordnungstabelle nicht gefunden.', QMessageBox.Ok)
