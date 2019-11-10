@@ -1,4 +1,4 @@
-# Copyright 2017 Patrick Kuttruff
+# Copyright 2017, 2019 Patrick Kuttruff
 #
 # -------------------- English --------------------
 # This file is part of Quality SPC.
@@ -141,16 +141,16 @@ class MyResult():
             self.myUpperTolerance = str(self.myUpperTolerance)
             self.myLowerTolerance = str(self.myLowerTolerance)
             self.myResult = str(self.myResult)
-        elif (isinstance(self.myUpperTolerance, float)) and (isinstance(self.myResult, bool)):
-            self.myUpperTolerance = str(self.myUpperTolerance)
-            self.myLowerTolerance = str(self.myLowerTolerance)
-            self.myResult = str(self.myResult)
+        # If myResult is a boolean, the tolerance must be null
+        elif (isinstance(self.myResult, bool)):
+            self.myUpperTolerance = None
+            self.myLowerTolerance = None
         # Detect the current body-number of the dict for the json log file
         self.counter = 1
         while str(self.counter) in self.myParent.myResultLog:
             self.counter = self.counter + 1
         # Add the data to the dict for the json file
-        self.myParent.myResultLog[str(self.counter)] = {'ID' : self.myId, 'Description' : self.myDescription, 'Nominal_Value' : self.myNominalValue, 'Unit' : self.myUnit, 'Upper_Tolerance' : self.myUpperTolerance, 'Lower_Tolerance' : self.myLowerTolerance, 'Result' : self.myResult, 'Serial_No' : self.mySerialNo, 'Date' : self.myDate, 'Time' : self.myTime, 'Comment' : self.myComment}
+        self.myParent.myResultLog['values'].append({'ID': self.myId, 'Description': self.myDescription, 'Nominal_Value': self.myNominalValue, 'Unit': self.myUnit, 'Upper_Tolerance': self.myUpperTolerance, 'Lower_Tolerance': self.myLowerTolerance, 'Result': self.myResult, 'Serial_No': self.mySerialNo, 'Date': self.myDate, 'Time': self.myTime, 'Comment': self.myComment})
 
     # Save the result as json file to the hd.
     def saveResultLog2(self, timestamp):

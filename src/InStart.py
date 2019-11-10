@@ -1,4 +1,4 @@
-# Copyright 2017 Patrick Kuttruff
+# Copyright 2017, 2019 Patrick Kuttruff
 #
 # -------------------- English --------------------
 # This file is part of Quality SPC.
@@ -77,7 +77,7 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
             # Set up the MyMainWindow-UI from the designer
             self.setupUi(self)
             # Set the window title with the version number
-            self.myWindowTitle = 'Quality SPC - v.1.08'
+            self.myWindowTitle = 'Quality SPC - v.1.09'
             self.setWindowTitle(self.myWindowTitle)
             # Set up the variables for the image and video handling
             self.myVisibleImage = None
@@ -140,7 +140,7 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
             self.myLicenseText = open(os.path.split(os.path.normpath(sys.argv[0]))[0] + os.sep + 'COPYING.txt', encoding='utf-8-sig').read()
             self.myTextBrowserLicense.setPlainText(self.myLicenseText)
             # Show the copyright information on the contact page
-            self.myTextBrowserContact.setPlainText('Copyright © 2017 Patrick Kuttruff \n\nhttps://github.com/President3D/Quality-SPC')
+            self.myTextBrowserContact.setPlainText('Copyright © 2017, 2019 Patrick Kuttruff \n\nhttps://github.com/President3D/Quality-SPC')
         except Exception as e:
             self.myErrorMessage(str(e))
 
@@ -543,10 +543,10 @@ class MyMainWindow(QMainWindow, Ui_myMainWindow):
                 self.myMatNo = self.myMatNo[:self.myMatNo.find('_')]
             else:
                 self.myMatNo = self.myMatNo[:self.myMatNo.find('.')]
-            # Set up the dict for the json output in the log file
-            self.myResultLog = {}
-            # Append the head data to the myResultLog dict
-            self.myResultLog['0'] = {'Material_No.' : str(self.myMatNo), 'Contract_No.' : str(self.myContractNumber), 'Staff' : str(self.myStaffNumber)}
+            # Set up the dict for the json output in the log file and append the head data
+            self.myResultLog = {'Material_No.': str(self.myMatNo), 'Contract_No.': str(self.myContractNumber), 'Staff': str(self.myStaffNumber)}
+            # Append the myResultLog with an empty list called 'values' for the result data
+            self.myResultLog['values'] = []
             # Set up the default values of the variables
             self.currentRow = 0
             self.currentSerialNo = {}
